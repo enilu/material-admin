@@ -11,7 +11,7 @@ public class KaptchaUtil {
     /**
      * 获取验证码开关
      *
-     * @author stylefeng
+     * @author enilu.cn
      * @Date 2017/5/23 22:34
      */
     public static Boolean getKaptchaOnOff() {

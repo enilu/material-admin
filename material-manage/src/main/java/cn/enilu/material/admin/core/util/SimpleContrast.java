@@ -21,7 +21,7 @@ public class SimpleContrast {
     /**
      * 比较两个对象,并返回不一致的信息
      *
-     * @author stylefeng
+     * @author enilu.cn
      * @Date 2017/5/9 19:34
      */
     public static String contrastObj(Object pojo1, Object pojo2) {

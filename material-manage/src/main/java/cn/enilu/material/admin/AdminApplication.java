@@ -18,7 +18,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 /**
  * SpringBoot方式启动类
  *
- * @author stylefeng
+ * @author enilu.cn
  * @Date 2017/5/21 12:06
  */
 @SpringBootApplication

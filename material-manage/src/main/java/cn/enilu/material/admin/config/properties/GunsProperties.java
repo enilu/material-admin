@@ -9,7 +9,7 @@ import java.io.File;
 /**
  * guns项目配置
  *
- * @author stylefeng
+ * @author enilu.cn
  * @Date 2017/5/23 22:31
  */
 @Component

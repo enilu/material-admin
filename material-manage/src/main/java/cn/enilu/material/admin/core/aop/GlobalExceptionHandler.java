@@ -138,7 +138,7 @@ public class GlobalExceptionHandler {
     /**
      * session失效的异常拦截
      *
-     * @author stylefeng
+     * @author enilu.cn
      * @Date 2017/6/7 21:02
      */
     @ExceptionHandler(InvalidSessionException.class)
@@ -152,7 +152,7 @@ public class GlobalExceptionHandler {
     /**
      * session异常
      *
-     * @author stylefeng
+     * @author enilu.cn
      * @Date 2017/6/7 21:02
      */
     @ExceptionHandler(UnknownSessionException.class)

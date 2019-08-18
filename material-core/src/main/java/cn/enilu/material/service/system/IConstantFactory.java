@@ -17,7 +17,7 @@ public interface IConstantFactory {
     /**
      * 根据用户id获取用户名称
      *
-     * @author stylefeng
+     * @author enilu.cn
      * @Date 2017/5/9 23:41
      */
     String getUserNameById(Long userId);
@@ -25,7 +25,7 @@ public interface IConstantFactory {
     /**
      * 根据用户id获取用户账号
      *
-     * @author stylefeng
+     * @author enilu.cn
      * @date 2017年5月16日21:55:371
      */
     String getUserAccountById(Long userId);
