@@ -1,0 +1,31 @@
+@layout("/common/layout.html"){
+<div class="block-header">
+    <h2>业务日志</h2>
+</div>
+
+<div class="card">
+    <div class="card-body card-padding">
+        <div class="row row-lg">
+            <div class="col-sm-12">
+                <div class="hidden-xs" id="LoginLogTableToolbar" role="group">
+                    <div class="col-sm-2">
+                        <#TimeCon id="beginTime" placeholder="开始时间"/>
+                    </div>
+                    <div class="col-sm-2">
+                        <#TimeCon id="endTime" placeholder="结束时间"/>
+                    </div>
+                    <div class="col-sm-2">
+                        <#NameCon id="logName" placeholder="日志名称" />
+                    </div>
+                        <#button name="搜索" icon="fa-search" clickFun="LoginLog.search()"/>
+                        <#button name="重置" icon="fa-refresh" btnCss="info" clickFun="LoginLog.reset()" space="true"/>
+                        <#button name="清空日志" icon="fa-remove" btnCss="danger" clickFun="LoginLog.delLog()" space="true"/>
+
+                </div>
+                <#table id="LoginLogTable"/>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/log/login_log.js"></script>
+@}

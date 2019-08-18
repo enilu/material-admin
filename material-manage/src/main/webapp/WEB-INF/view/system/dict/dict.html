@@ -1,0 +1,27 @@
+@layout("/common/layout.html"){
+<div class="block-header">
+    <h2>字典管理</h2>
+</div>
+<div class="card">
+    <div class="card-body card-padding">
+        <div class="row row-lg">
+            <div class="col-sm-12">
+                <div class="hidden-xs" id="DictTableToolbar" role="group">
+                    <div class="col-sm-6">
+                        <#NameCon id="condition" placeholder="名称" />
+                    </div>
+                    <#button name="搜索" icon="fa-search" clickFun="Dict.search()"/>
+
+                    @if(shiro.hasPermission("/dict/add")){
+                        <#button name="添加" icon="fa-plus" clickFun="Dict.openAddDict()" space="true"/>
+                    @}
+
+                </div>
+                <#table id="DictTable"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="${ctxPath}/static/modular/system/dict/dict.js"></script>
+@}

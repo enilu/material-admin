@@ -1,0 +1,46 @@
+@layout("/common/layout.html"){
+<div class="block-header">
+	<h2>用户管理</h2>
+</div>
+
+<div class="card">
+	<div class="card-body card-padding">
+		<div class="row row-lg">
+			<div class="col-sm-12">
+				<div class="row">
+					<div class="col-lg-2 col-sm-3" style="padding-right:0px;">
+						<div class="panel panel-default panel-ztree">
+							<div class="panel-heading" style="padding:5px;">组织机构</div>
+							<div class="panel-body dept-tree">
+								<ul id="deptTree" class="ztree"></ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-10 col-sm-9" >
+
+						<div class="hidden-xs" id="managerTableToolbar" role="group">
+							<div class="col-lg-2 col-sm-4">
+								<#NameCon id="name"  placeholder="帐号/姓名/手机号"/>
+							</div>
+							<div class="col-lg-2 col-sm-4">
+								<#TimeCon id="beginTime" placeholder="创建起始日期"/>
+							</div>
+							<div class="col-lg-2 col-sm-4">
+								<#TimeCon id="endTime" placeholder="创建结束日期"/>
+							</div>
+								<#button name="搜索" icon="fa-search" clickFun="MgrUser.search()"/>
+								<#button name="重置" icon="fa-refresh" btnCss="info" clickFun="MgrUser.resetSearch()" space="true"/>
+							@if(shiro.hasPermission("/mgr/add")){
+							<#button name="添加" icon="fa-plus" btnCss="primary" clickFun="MgrUser.openAddMgr()" space="true"/>
+							@}
+
+						</div>
+						<#table id="managerTable"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="${ctxPath}/static/modular/system/user/user.js"></script>
+@}

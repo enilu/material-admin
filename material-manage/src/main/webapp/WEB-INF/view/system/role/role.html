@@ -1,0 +1,25 @@
+@layout("/common/layout.html"){
+<div class="block-header">
+    <h2>角色管理</h2>
+</div>
+
+<div class="card">
+    <div class="card-body card-padding">
+        <div class="row row-lg">
+            <div class="col-sm-12">
+                <div class="hidden-xs" id="roleTableToolbar" role="group">
+                    <div class="col-sm-6">
+                    <#NameCon id="roleName" placeholder="角色名称" />
+                    </div>
+                    <#button name="搜索" icon="fa-search" clickFun="Role.search()" />
+                    @if(shiro.hasPermission("/role/add")){
+                        <#button name="添加" icon="fa-plus" clickFun="Role.openAddRole()" space="true"/>
+                    @}
+                </div>
+                <#table id="roleTable"/>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/role/role.js"></script>
+@}

@@ -1,0 +1,35 @@
+.input-group .form-control{
+    float:none;
+}
+
+.ibox-title h5 {
+    display: inline-block;
+    font-size: 14px;
+    margin: 0 0 7px;
+    padding: 0;
+    text-overflow: ellipsis;
+    float: left;
+    font-weight:600;
+    margin-bottom:15px;
+}
+.dept-tree{
+    padding:10px 0px 0px 0px;
+}
+.ztree{
+    padding: 0px;margin: 5px;
+}
+.panel-ztree {
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
+    min-height: 644px;
+}
+.fixed-table-toolbar>div>div>.col-sm-6:first-child{
+    padding-left:0px;
+}
+
+.fixed-table-toolbar>div>div>div:first-child{
+    padding-left:0px;
+}
+.bs-checkbox {
+    text-align: center !important;
+    vertical-align: middle !important;
+}

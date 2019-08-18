@@ -1,0 +1,26 @@
+@layout("/common/layout.html"){
+<div class="block-header">
+    <h2>部门管理</h2>
+</div>
+<div class="card">
+    <div class="card-body card-padding">
+        <div class="row row-lg">
+            <div class="col-sm-12">
+                <div class="hidden-xs" id="DeptTableToolbar" role="group">
+                    <div class="col-sm-6">
+                        <#NameCon id="condition" placeholder="名称" />
+                    </div>
+                    <#button name="搜索" icon="fa-search" clickFun="Dept.search()"/>
+
+                    @if(shiro.hasPermission("/dept/add")){
+                        <#button name="添加" icon="fa-plus" clickFun="Dept.openAddDept()" space="true"/>
+                    @}
+                </div>
+                <#table id="DeptTable"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="${ctxPath}/static/modular/system/dept/dept.js"></script>
+@}

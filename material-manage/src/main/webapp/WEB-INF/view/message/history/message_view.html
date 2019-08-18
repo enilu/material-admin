@@ -1,0 +1,21 @@
+@layout("/common/include.html"){
+<div class="card">
+    <div class="card-body card-padding">
+        <div class="form-horizontal">
+            <input type="hidden" id="id" value="${item.id}">
+            <div class="row">
+                <div class="col-sm-12 b-r">
+                            <#input name="消息模板" value="${item.tplCode}"  readonly="readonly"/>
+                </div>
+                <div class="col-sm-12 b-r">
+                            <#input name="接收人" value="${item.receiver}" underline="true"  readonly="readonly"/>
+                </div>
+                <div class="col-sm-12">
+                            <#textarea  name="消息内容" value="${item.content}"  readonly="readonly" rows="3" cols="50"/>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+@}

@@ -1,0 +1,20 @@
+@layout("/common/layout.html"){
+
+<div class="block-header">
+    <h2>发送器列表</h2>
+</div>
+<div class="card">
+    <div class="card-body card-padding">
+        <div class="row row-lg">
+            <div class="col-sm-12">
+
+                <div class="hidden-xs" id="MessageSenderTableToolbar" role="group">
+                    <#button name="添加" icon="fa-plus" clickFun="MessageSender.openAdd()"/>
+                </div>
+                <#table id="MessageSenderTable"/>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/message/sender/sender.js"></script>
+@}

@@ -1,0 +1,20 @@
+@layout("/common/layout.html"){
+<div class="block-header">
+    <h2>模板列表</h2>
+</div>
+
+<div class="card">
+    <div class="card-body card-padding">
+        <div class="row row-lg">
+            <div class="col-sm-12">
+
+                <div class="hidden-xs" id="MessageTemplateTableToolbar" role="group">
+                    <#button name="添加" icon="fa-plus" clickFun="MessageTemplate.openAdd()"/>
+                </div>
+                <#table id="MessageTemplateTable"/>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/message/template/template.js"></script>
+@}

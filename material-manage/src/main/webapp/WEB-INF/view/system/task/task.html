@@ -1,0 +1,26 @@
+@layout("/common/layout.html"){
+<div class="block-header">
+    <h2>任务管理</h2>
+</div>
+
+<div class="card">
+    <div class="card-body card-padding">
+        <div class="row row-lg">
+            <div class="col-sm-12">
+                <div class="hidden-xs" id="TaskTableToolbar" role="group">
+                    <div class="col-sm-6">
+                        <#NameCon id="name" placeholder="名称" />
+                    </div>
+                    <#button name="搜索" icon="fa-search" clickFun="Task.search()"/>
+                    @if(shiro.hasPermission("/task/add")){
+                        <#button name="添加" icon="fa-plus" clickFun="Task.openAddTask()" space="true"/>
+                    @}
+                </div>
+                <#table id="TaskTable"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="${ctxPath}/static/modular/system/task/task.js"></script>
+@}
