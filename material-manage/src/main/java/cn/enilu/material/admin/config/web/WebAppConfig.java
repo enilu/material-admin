@@ -6,10 +6,8 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
- * 系统配置<br>
+ * 系统配置
  *  配置拦截器
- * @version 2018-07-24
- *
  * @author enilu
  */
 @Configuration
