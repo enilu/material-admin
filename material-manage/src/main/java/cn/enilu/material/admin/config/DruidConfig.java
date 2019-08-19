@@ -1,4 +1,4 @@
-package cn.enilu.material.admin.config.web;
+package cn.enilu.material.admin.config;
 
 import cn.enilu.material.admin.core.xss.XssFilter;
 import com.alibaba.druid.pool.DruidDataSource;
@@ -29,7 +29,7 @@ import java.util.Properties;
  * @date 2016年11月12日 下午5:03:32
  */
 @Configuration
-public class WebConfig {
+public class DruidConfig {
 
     /**
      * druidServlet注册

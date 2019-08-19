@@ -4,6 +4,7 @@ public enum ConfigKeyEnum {
 
     SYSTEM_FILE_UPLOAD_PATH("system.file.upload.path"),
     SYSTEM_APP_NAME("system.app.name"),
+    SYSTEM_RESOURCE_VERSION("system.resource.version"),
     /**
      * 腾讯sms接口appid
      */
@@ -16,6 +17,7 @@ public enum ConfigKeyEnum {
      * 腾讯sms接口签名参数
      */
     API_TENCENT_SMS_SIGN("api.tencent.sms.sign");
+
     private String value;
 
     ConfigKeyEnum(String value) {

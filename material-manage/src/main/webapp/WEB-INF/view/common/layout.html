@@ -7,21 +7,21 @@
     <title>后台管理 - 主页</title>
     <link rel="shortcut icon" href="${ctxPath}/static/favicon.ico">
     <!-- Vendor CSS -->
-    <link href="${ctxPath}/static/vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
-    <link href="${ctxPath}/static/vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.css" rel="stylesheet">
-    <link href="${ctxPath}/static/vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
-    <link href="${ctxPath}/static/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">
-    <link href="${ctxPath}/static/vendors/bower_components/bootstrap-select/1.7.2/css/bootstrap-select.css" rel="stylesheet">
-    <link href="${ctxPath}/static/css/font-awesome.css?v=4.4.0" rel="stylesheet">
-    <link href="${ctxPath}/static/vendors/bower_components/nouislider/distribute/jquery.nouislider.min.css" rel="stylesheet">
-    <link href="${ctxPath}/static/vendors/bower_components/eonasdan-bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-    <link href="${ctxPath}/static/vendors/farbtastic/farbtastic.css" rel="stylesheet">
-    <link href="${ctxPath}/static/vendors/bower_components/chosen/chosen.min.css" rel="stylesheet">
-    <link href="${ctxPath}/static/vendors/summernote/dist/summernote.css" rel="stylesheet">
+    <link href="${ctxPath}/static/vendors/bower_components/animate.css/animate.min.css?ver=${version}" rel="stylesheet">
+    <link href="${ctxPath}/static/vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.css?ver=${version}" rel="stylesheet">
+    <link href="${ctxPath}/static/vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css?ver=${version}" rel="stylesheet">
+    <link href="${ctxPath}/static/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css?ver=${version}" rel="stylesheet">
+    <link href="${ctxPath}/static/vendors/bower_components/bootstrap-select/1.7.2/css/bootstrap-select.css?ver=${version}" rel="stylesheet">
+    <link href="${ctxPath}/static/css/font-awesome.css?ver=${version}" rel="stylesheet">
+    <link href="${ctxPath}/static/vendors/bower_components/nouislider/distribute/jquery.nouislider.min.css?ver=${version}" rel="stylesheet">
+    <link href="${ctxPath}/static/vendors/bower_components/eonasdan-bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css?ver=${version}" rel="stylesheet">
+    <link href="${ctxPath}/static/vendors/farbtastic/farbtastic.css?ver=${version}" rel="stylesheet">
+    <link href="${ctxPath}/static/vendors/bower_components/chosen/chosen.min.css?ver=${version}" rel="stylesheet">
+    <link href="${ctxPath}/static/vendors/summernote/dist/summernote.css?ver=${version}" rel="stylesheet">
 
     <!-- CSS -->
-    <link href="${ctxPath}/static/css/app.min.1.css" rel="stylesheet">
-    <link href="${ctxPath}/static/css/app.min.2.css" rel="stylesheet">
+    <link href="${ctxPath}/static/css/app.min.1.css?ver=${version}" rel="stylesheet">
+    <link href="${ctxPath}/static/css/app.min.2.css?ver=${version}" rel="stylesheet">
 
     <style>
         .ztree-icon-default{
@@ -30,61 +30,61 @@
     </style>
 
     <!--整合-->
-    <link href="${ctxPath}/static/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
-    <link href="${ctxPath}/static/css/plugins/ztree/zTreeStyle.css" rel="stylesheet">
-    <link href="${ctxPath}/static/css/plugins/jquery-treegrid/css/jquery.treegrid.css" rel="stylesheet"/>
-    <link href="${ctxPath}/static/css/plugins/webuploader/webuploader.css" rel="stylesheet">
+    <link href="${ctxPath}/static/css/plugins/bootstrap-table/bootstrap-table.min.css?ver=${version}" rel="stylesheet">
+    <link href="${ctxPath}/static/css/plugins/ztree/zTreeStyle.css?ver=${version}" rel="stylesheet">
+    <link href="${ctxPath}/static/css/plugins/jquery-treegrid/css/jquery.treegrid.css?ver=${version}" rel="stylesheet"/>
+    <link href="${ctxPath}/static/css/plugins/webuploader/webuploader.css?ver=${version}" rel="stylesheet">
     <!--自定义css-->
-    <link href="${ctxPath}/static/css/_fstyle.css" rel="stylesheet">
-    <link href="${ctxPath}/static/css/material.css" rel="stylesheet">
+    <link href="${ctxPath}/static/css/_fstyle.css?ver=${version}" rel="stylesheet">
+    <link href="${ctxPath}/static/css/material.css?ver=${version}" rel="stylesheet">
 
     <!-- Javascript Libraries -->
-    <script src="${ctxPath}/static/vendors/bower_components/jquery/2.1.4/jquery.min.js"></script>
-    <script src="${ctxPath}/static/vendors/bower_components/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="${ctxPath}/static/vendors/bower_components/jquery/2.1.4/jquery.min.js?ver=${version}"></script>
+    <script src="${ctxPath}/static/vendors/bower_components/bootstrap/3.3.6/js/bootstrap.min.js?ver=${version}"></script>
 
-    <script src="${ctxPath}/static/vendors/bower_components/flot/jquery.flot.js"></script>
-    <script src="${ctxPath}/static/vendors/bower_components/flot/jquery.flot.resize.js"></script>
-    <script src="${ctxPath}/static/vendors/bower_components/flot.curvedlines/curvedLines.js"></script>
-    <script src="${ctxPath}/static/vendors/sparklines/jquery.sparkline.min.js"></script>
-    <script src="${ctxPath}/static/vendors/bower_components/jquery.easy-pie-chart/2.1.6/jquery.easypiechart.min.js"></script>
-    <script src="${ctxPath}/static/vendors/bower_components/bootstrap-select/1.7.2/js/bootstrap-select.js"></script>
-    <script src="${ctxPath}/static/vendors/bower_components/moment/2.10.6/moment-with-locales.min.js"></script>
-    <script src="${ctxPath}/static/vendors/bower_components/eonasdan-bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
-    <script src="${ctxPath}/static/vendors/bower_components/moment/2.10.6/moment.min.js"></script>
-    <script src="${ctxPath}/static/vendors/bower_components/Waves/0.7.4/waves.min.js"></script>
-    <script src="${ctxPath}/static/vendors/bootstrap-growl/bootstrap-growl.min.js"></script>
-    <script src="${ctxPath}/static/vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.min.js"></script>
-    <script src="${ctxPath}/static/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="${ctxPath}/static/vendors/bower_components/flot/jquery.flot.js?ver=${version}"></script>
+    <script src="${ctxPath}/static/vendors/bower_components/flot/jquery.flot.resize.js?ver=${version}"></script>
+    <script src="${ctxPath}/static/vendors/bower_components/flot.curvedlines/curvedLines.js?ver=${version}"></script>
+    <script src="${ctxPath}/static/vendors/sparklines/jquery.sparkline.min.js?ver=${version}"></script>
+    <script src="${ctxPath}/static/vendors/bower_components/jquery.easy-pie-chart/2.1.6/jquery.easypiechart.min.js?ver=${version}"></script>
+    <script src="${ctxPath}/static/vendors/bower_components/bootstrap-select/1.7.2/js/bootstrap-select.js?ver=${version}"></script>
+    <script src="${ctxPath}/static/vendors/bower_components/moment/2.10.6/moment-with-locales.min.js?ver=${version}"></script>
+    <script src="${ctxPath}/static/vendors/bower_components/eonasdan-bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js?ver=${version}"></script>
+    <script src="${ctxPath}/static/vendors/bower_components/moment/2.10.6/moment.min.js?ver=${version}"></script>
+    <script src="${ctxPath}/static/vendors/bower_components/Waves/0.7.4/waves.min.js?ver=${version}"></script>
+    <script src="${ctxPath}/static/vendors/bootstrap-growl/bootstrap-growl.min.js?ver=${version}"></script>
+    <script src="${ctxPath}/static/vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.min.js?ver=${version}"></script>
+    <script src="${ctxPath}/static/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js?ver=${version}"></script>
 
     <!-- Placeholder for IE9 -->
     <!--[if IE 9 ]>
-    <script src="${ctxPath}/static/vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
+    <script src="${ctxPath}/static/vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js?ver=${version}"></script>
     <![endif]-->
 
-    <script src="${ctxPath}/static/js/flot-charts/curved-line-chart.js"></script>
-    <script src="${ctxPath}/static/js/flot-charts/line-chart.js"></script>
-    <script src="${ctxPath}/static/js/charts.js"></script>
-    <script src="${ctxPath}/static/js/functions.js"></script>
+    <script src="${ctxPath}/static/js/flot-charts/curved-line-chart.js?ver=${version}"></script>
+    <script src="${ctxPath}/static/js/flot-charts/line-chart.js?ver=${version}"></script>
+    <script src="${ctxPath}/static/js/charts.js?ver=${version}"></script>
+    <script src="${ctxPath}/static/js/functions.js?ver=${version}"></script>
 
     <!-- 整合 -->
-    <script src="${ctxPath}/static/js/plugins/ztree/jquery.ztree.all.min.js"></script>
-    <script src="${ctxPath}/static/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
-    <script src="${ctxPath}/static/js/plugins/validate/bootstrapValidator.min.js"></script>
-    <script src="${ctxPath}/static/js/plugins/validate/zh_CN.js"></script>
-    <script src="${ctxPath}/static/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
-    <script src="${ctxPath}/static/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
-    <script src="${ctxPath}/static/js/plugins/jquery-treegrid/js/jquery.treegrid.min.js"></script>
-    <script src="${ctxPath}/static/js/plugins/jquery-treegrid/js/jquery.treegrid.bootstrap3.js"></script>
-    <script src="${ctxPath}/static/js/plugins/jquery-treegrid/extension/jquery.treegrid.extension.js"></script>
-    <script src="${ctxPath}/static/js/plugins/layer/layer.min.js"></script>
-    <script src="${ctxPath}/static/js/plugins/layer/laydate/laydate.js"></script>
-    <script src="${ctxPath}/static/js/plugins/webuploader/webuploader.min.js"></script>
-    <script src="${ctxPath}/static/js/common/ajax-object.js"></script>
-    <script src="${ctxPath}/static/js/common/bootstrap-table-object.js"></script>
-    <script src="${ctxPath}/static/js/common/tree-table-object.js"></script>
-    <script src="${ctxPath}/static/js/common/web-upload-object.js"></script>
-    <script src="${ctxPath}/static/js/common/ztree-object.js"></script>
-    <script src="${ctxPath}/static/js/common/Feng.js"></script>
+    <script src="${ctxPath}/static/js/plugins/ztree/jquery.ztree.all.min.js?ver=${version}"></script>
+    <script src="${ctxPath}/static/js/plugins/bootstrap-table/bootstrap-table.min.js?ver=${version}"></script>
+    <script src="${ctxPath}/static/js/plugins/validate/bootstrapValidator.min.js?ver=${version}"></script>
+    <script src="${ctxPath}/static/js/plugins/validate/zh_CN.js?ver=${version}"></script>
+    <script src="${ctxPath}/static/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js?ver=${version}"></script>
+    <script src="${ctxPath}/static/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js?ver=${version}"></script>
+    <script src="${ctxPath}/static/js/plugins/jquery-treegrid/js/jquery.treegrid.min.js?ver=${version}"></script>
+    <script src="${ctxPath}/static/js/plugins/jquery-treegrid/js/jquery.treegrid.bootstrap3.js?ver=${version}"></script>
+    <script src="${ctxPath}/static/js/plugins/jquery-treegrid/extension/jquery.treegrid.extension.js?ver=${version}"></script>
+    <script src="${ctxPath}/static/js/plugins/layer/layer.min.js?ver=${version}"></script>
+    <script src="${ctxPath}/static/js/plugins/layer/laydate/laydate.js?ver=${version}"></script>
+    <script src="${ctxPath}/static/js/plugins/webuploader/webuploader.min.js?ver=${version}"></script>
+    <script src="${ctxPath}/static/js/common/ajax-object.js?ver=${version}"></script>
+    <script src="${ctxPath}/static/js/common/bootstrap-table-object.js?ver=${version}"></script>
+    <script src="${ctxPath}/static/js/common/tree-table-object.js?ver=${version}"></script>
+    <script src="${ctxPath}/static/js/common/web-upload-object.js?ver=${version}"></script>
+    <script src="${ctxPath}/static/js/common/ztree-object.js?ver=${version}"></script>
+    <script src="${ctxPath}/static/js/common/Feng.js?ver=${version}"></script>
 
 
     <script type="text/javascript">
