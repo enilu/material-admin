@@ -50,7 +50,7 @@
     
     ```
 - 更改配置文件中相应数据库配置
-- material-manage启动的时候回自动创建表并导入src/main/resources/import.sql到数据库中，所以无需开发人员自己初始化表结构
+- material-manage启动的时候会自动创建表并导入src/main/resources/import.sql到数据库中，无需开发手动初始化表结构
 - 启动material-manage中的类：cn.enilu.material.admin.AdminApplication
 - 访问 http://localhost:8085，   
 - 登录，用户名密码:admin/admin
