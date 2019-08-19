@@ -52,7 +52,7 @@ user/password:admin/admin
 ``` 
 ## Online Demo
 
-[(http://material.enilu.cn](http://material.enilu.cn)
+[http://material.enilu.cn](http://material.enilu.cn)
 
 
 ## License
