@@ -13,26 +13,21 @@ var ${table.entityClassName} = {
  */
 ${table.entityClassName}.initColumn = function () {
     return [
-        {field: 'selectItem', radio: true},
+        {field: 'selectItem', checkbox: true},
         {title: 'ID', field: 'id', visible: true, align: 'center', valign: 'middle'},
 #foreach ($column in $table.LabeledColumns)
+    #if($velocityCount==1)
+        {title: '${column.label}', field: '${column.FieldName}', visible: true, align: 'center', valign: 'middle',formatter:function(data,row){
+                return '<a href="javascript:;" onclick="${table.entityClassName}.open${table.entityClassName}Detail('+row.id+')">'+data+'</a>';
+         }},
+    #else
         {title: '${column.label}', field: '${column.FieldName}', visible: true, align: 'center', valign: 'middle'},
+    #end
 #end
+        {title: '操作',formatter:function(data,row){
+                return '<button type="button" class="btn btn-info btn-icon waves-effect waves-circle" onclick="${table.entityClassName}.delete('+row.id+')" title="删除"><span class="zmdi zmdi-delete"></span></button>';
+        }}
     ];
-};
-
-/**
- * 检查是否选中
- */
-${table.entityClassName}.check = function () {
-    var selected = $('#' + this.id).bootstrapTable('getSelections');
-    if(selected.length == 0){
-        Feng.info("请先选中表格中的某一记录！");
-        return false;
-    }else{
-        ${table.entityClassName}.seItem = selected[0];
-        return true;
-    }
 };
 
 /**
@@ -42,7 +37,7 @@ ${table.entityClassName}.openAdd${table.entityClassName} = function () {
     var index = layer.open({
         type: 2,
         title: '添加${table.Label}',
-        area: ['85%', '85%'], //宽高
+        area: ['65%', '65%'], //宽高
         fix: false, //不固定
         maxmin: true,
         content: Feng.ctxPath + '${table.UriPrefix}/add'
@@ -53,34 +48,36 @@ ${table.entityClassName}.openAdd${table.entityClassName} = function () {
 /**
  * 打开查看${table.Label}详情
  */
-${table.entityClassName}.open${table.entityClassName}Detail = function () {
-    if (this.check()) {
-        var index = layer.open({
-            type: 2,
-            title: '系统参数详情',
-            area: ['85%', '85%'], //宽高
-            fix: false, //不固定
-            maxmin: true,
-            content: Feng.ctxPath + '${table.UriPrefix}/edit/' + ${table.entityClassName}.seItem.id
-        });
-        this.layerIndex = index;
-    }
+${table.entityClassName}.open${table.entityClassName}Detail = function (id) {
+    var index = layer.open({
+        type: 2,
+        title: '系统参数详情',
+        area: ['65%', '65%'], //宽高
+        fix: false, //不固定
+        maxmin: true,
+        content: Feng.ctxPath + '${table.UriPrefix}/edit/' + id
+    });
+    this.layerIndex = index;
+
 };
 
 /**
  * 删除${table.Label}
  */
-${table.entityClassName}.delete = function () {
-    if (this.check()) {
+${table.entityClassName}.delete = function (id) {
+    var operation = function() {
         var ajax = new $ax(Feng.ctxPath + "${table.UriPrefix}/delete", function (data) {
             Feng.success("删除成功!");
-            ${table.entityClassName}.table.refresh();
+            ${table.entityClassName}.
+            table.refresh();
         }, function (data) {
             Feng.error("删除失败!" + data.responseJSON.message + "!");
         });
-        ajax.set("id",this.seItem.id);
+        ajax.set("id", id);
         ajax.start();
     }
+    Feng.confirm("确认删除该记录?", operation);
+
 };
 
 /**

@@ -1,6 +1,6 @@
 package cn.enilu.material.admin.core.util;
 
-import cn.enilu.material.admin.config.properties.GunsProperties;
+import cn.enilu.material.admin.config.properties.AppProperties;
 import cn.enilu.material.bean.vo.SpringContextHolder;
 
 /**
@@ -15,6 +15,6 @@ public class KaptchaUtil {
      * @Date 2017/5/23 22:34
      */
     public static Boolean getKaptchaOnOff() {
-        return SpringContextHolder.getBean(GunsProperties.class).getKaptchaOpen();
+        return SpringContextHolder.getBean(AppProperties.class).getKaptchaOpen();
     }
 }

@@ -1,7 +1,7 @@
 package cn.enilu.material.admin.core.aop;
 
 import cn.enilu.material.bean.enumeration.BizExceptionEnum;
-import cn.enilu.material.bean.exception.GunsException;
+import cn.enilu.material.bean.exception.ApplicationException;
 import cn.enilu.material.platform.log.LogManager;
 import cn.enilu.material.platform.log.LogTaskFactory;
 import cn.enilu.material.shiro.ShiroKit;
@@ -42,10 +42,10 @@ public class GlobalExceptionHandler {
      *
      * @author fengshuonan
      */
-    @ExceptionHandler(GunsException.class)
+    @ExceptionHandler(ApplicationException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ResponseBody
-    public ErrorTip notFount(GunsException e) {
+    public ErrorTip notFount(ApplicationException e) {
         LogManager.me().executeLog(LogTaskFactory.exceptionLog(ShiroKit.getUser().getId(), e));
         HttpKit.getRequest().setAttribute("tip", e.getMessage());
         log.error("业务异常:", e);

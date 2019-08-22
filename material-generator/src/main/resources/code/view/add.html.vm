@@ -1,8 +1,7 @@
-@layout("/common/_container.html"){
-<div class="ibox float-e-margins">
-    <div class="ibox-content">
+@layout("/common/include.html"){
+<div class="card">
+    <div class="card-body card-padding">
         <div class="form-horizontal">
-
             <input type="hidden" id="id" value="">
 
             <div class="row">

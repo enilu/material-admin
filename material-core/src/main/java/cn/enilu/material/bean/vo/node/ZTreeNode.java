@@ -12,6 +12,7 @@ public class ZTreeNode {
 	private Long id;	//节点id
 	
 	private Long pId;//父节点id
+	private String code;//编号
 	
 	private String name;//节点名称
 	
@@ -77,6 +78,14 @@ public class ZTreeNode {
 		this.nodeData = nodeData;
 	}
 
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
 	public static ZTreeNode createParent(){
 		ZTreeNode zTreeNode = new ZTreeNode();
 		zTreeNode.setChecked(true);
@@ -84,6 +93,7 @@ public class ZTreeNode {
 		zTreeNode.setName("顶级");
 		zTreeNode.setOpen(true);
 		zTreeNode.setpId(0L);
+		zTreeNode.setCode("");
 		return zTreeNode;
 	}
 

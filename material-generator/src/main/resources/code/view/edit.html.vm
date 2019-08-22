@@ -1,9 +1,9 @@
-@layout("/common/_container.html"){
+@layout("/common/include.html"){
 #set($item_id='${item.id}')
 #set($itemLeft = '${item')
 #set($itemRight = '}')
 
-<div class="ibox float-e-margins">
+<div class="card">
     <div class="ibox-content">
         <div class="form-horizontal">
 

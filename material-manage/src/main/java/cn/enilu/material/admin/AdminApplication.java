@@ -1,6 +1,6 @@
 package cn.enilu.material.admin;
 
-import cn.enilu.material.admin.config.properties.GunsProperties;
+import cn.enilu.material.admin.config.properties.AppProperties;
 import cn.enilu.material.dao.BaseRepositoryFactoryBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,14 +32,14 @@ public class AdminApplication extends WebMvcConfigurerAdapter {
     protected final static Logger logger = LoggerFactory.getLogger(AdminApplication.class);
 
     @Autowired
-    GunsProperties gunsProperties;
+    AppProperties appProperties;
 
     /**
      * 增加swagger的支持
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        if (gunsProperties.getSwaggerOpen()) {
+        if (appProperties.getSwaggerOpen()) {
             registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
             registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
         }

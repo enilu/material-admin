@@ -5,8 +5,8 @@
       entityModel: "material-core",
       daoModel: "material-core",
       serviceModel: "material-core",
-      controllerModel: "material-admin",
-      viewModel: "material-admin"
+      controllerModel: "material-manage",
+      viewModel: "material-manage"
     }
   }
 }

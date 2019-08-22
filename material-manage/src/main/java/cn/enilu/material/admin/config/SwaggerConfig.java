@@ -20,8 +20,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  */
 @Configuration
 @EnableSwagger2
-@ConditionalOnProperty(prefix = "guns", name = "swagger-open", havingValue = "true")
-public class SwaggerConfig{
+@ConditionalOnProperty(prefix = "apps", name = "swagger-open", havingValue = "true")
+public class SwaggerConfig {
 
     @Bean
     public Docket createRestApi() {
@@ -36,8 +36,8 @@ public class SwaggerConfig{
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Guns-lite Doc")
-                .description("guns-lite Api文档")
+                .title("material-admin Doc")
+                .description("material-admin Api文档")
                 .termsOfServiceUrl("http://www.enilu.cn/guns-lite/")
                 .contact("enilu.cn")
                 .version("2.0")

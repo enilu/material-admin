@@ -3,8 +3,8 @@ package cn.enilu.material.service.task;
 
 import cn.enilu.material.bean.entity.system.Task;
 import cn.enilu.material.bean.entity.system.TaskLog;
-import cn.enilu.material.bean.exception.GunsException;
-import cn.enilu.material.bean.exception.GunsExceptionEnum;
+import cn.enilu.material.bean.exception.ApplicationException;
+import cn.enilu.material.bean.exception.ExceptionEnum;
 import cn.enilu.material.bean.vo.QuartzJob;
 import cn.enilu.material.bean.vo.query.Page;
 import cn.enilu.material.dao.system.TaskLogRepository;
@@ -106,7 +106,7 @@ public class TaskService extends BaseService<Task,Long,TaskRepository> {
 				jobService.addJob(jobService.getJob(task));
 			}
 		} catch (SchedulerException e) {
-			throw  new GunsException(GunsExceptionEnum.TASK_CONFIG_ERROR);
+			throw  new ApplicationException(ExceptionEnum.TASK_CONFIG_ERROR);
 		}
 		return task;
 	}

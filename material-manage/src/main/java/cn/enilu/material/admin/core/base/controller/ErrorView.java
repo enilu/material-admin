@@ -14,7 +14,7 @@ import java.util.Map;
  * @date 2017-05-21 11:34
  */
 @Component("error")
-public class GunsErrorView implements View {
+public class ErrorView implements View {
 
     @Override
     public String getContentType() {

@@ -68,7 +68,7 @@ public class Generator {
         Pattern includePattern = Pattern.compile(".*");
         Pattern excludePattern = null;
         String module = "test";
-        String basePackageName = "com.xinshucredit.edu";
+        String basePackageName = "cn.enilu.material";
         String controllerPackageName = "admin.modular."+module;
         String servicePackageName = "service."+module;
         String repositoryPackageName = "dao."+module;
@@ -85,7 +85,7 @@ public class Generator {
         options.addOption("x", "exclude", true, "exclude table pattern");
         options.addOption("basePath", "basePath", true, "base uri");
         options.addOption("module", "module", true, "current module name");
-        options.addOption("p", "package", true, "base package name,default:cn.enilu.guns");
+        options.addOption("p", "package", true, "base package name,default:cn.enilu.material");
         options.addOption("ctr",
                           "package",
                           true,
@@ -158,7 +158,7 @@ public class Generator {
         log.debug("=================================================");
         log.debug("=================================================");
 
-        Loader loader = (Loader) Mirror.me(Lang.loadClassQuite("com.xinshucredit.code." + Strings.upperFirst(_loader) + "DescLoader")).born();
+        Loader loader = (Loader) Mirror.me(Lang.loadClassQuite("cn.enilu.flash.code." + Strings.upperFirst(_loader) + "DescLoader")).born();
         Map<String, TableDescriptor> tables = loader.loadTables(ioc,
                                                                 basePackageName,
                                                                 baseUri,

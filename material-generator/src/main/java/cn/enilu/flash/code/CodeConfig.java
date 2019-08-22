@@ -1,11 +1,11 @@
 package cn.enilu.flash.code;
 
 public class CodeConfig {
-    private String entityModel = "guns-entity";
-    private String daoModel = "guns-dao";
-    private String serviceModel = "guns-service";
-    private String controllerModel = "guns-api";
-    private String viewModel = "guns-admin-vuejs";
+    private String entityModel = "material-entity";
+    private String daoModel = "material-dao";
+    private String serviceModel = "material-service";
+    private String controllerModel = "material-api";
+    private String viewModel = "material-manage";
     public String getModel(String type){
         switch (type){
             case "model":

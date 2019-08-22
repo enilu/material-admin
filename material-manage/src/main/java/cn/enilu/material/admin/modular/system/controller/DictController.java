@@ -7,7 +7,7 @@ import cn.enilu.material.bean.constant.Const;
 import cn.enilu.material.bean.dictmap.DictMap;
 import cn.enilu.material.bean.entity.system.Dict;
 import cn.enilu.material.bean.enumeration.BizExceptionEnum;
-import cn.enilu.material.bean.exception.GunsException;
+import cn.enilu.material.bean.exception.ApplicationException;
 import cn.enilu.material.service.system.DictService;
 import cn.enilu.material.service.system.LogObjectHolder;
 import cn.enilu.material.service.system.impl.ConstantFactory;
@@ -80,7 +80,7 @@ public class DictController extends BaseController {
     @ResponseBody
     public Object add(String dictName, String dictValues) {
         if (ToolUtil.isOneEmpty(dictName, dictValues)) {
-            throw new GunsException(BizExceptionEnum.REQUEST_NULL);
+            throw new ApplicationException(BizExceptionEnum.REQUEST_NULL);
         }
         this.dictService.addDict(dictName, dictValues);
         return SUCCESS_TIP;
@@ -116,7 +116,7 @@ public class DictController extends BaseController {
     @ResponseBody
     public Object update(Long dictId, String dictName, String dictValues) {
         if (ToolUtil.isOneEmpty(dictId, dictName, dictValues)) {
-            throw new GunsException(BizExceptionEnum.REQUEST_NULL);
+            throw new ApplicationException(BizExceptionEnum.REQUEST_NULL);
         }
         dictService.editDict(dictId, dictName, dictValues);
         return SUCCESS_TIP;
