@@ -1,7 +1,7 @@
 module.exports = {
-    title: 'guns-lite',
-    description: '使用guns-lite快速构建web应用程序',
-    base: '/guns-lite/',
+    title: 'Material Admin',
+    description: '使用Material Admin快速构建web应用程序',
+    base: '/material-admin/',
     head: [
         ['link', { rel: 'shortcut icon', type: "image/x-icon", href: './favicon.ico' }]
     ],
@@ -10,14 +10,13 @@ module.exports = {
     port: 8081,
     ga: 'UA-71886989-13',
     themeConfig: {
-        repo: 'enilu/guns-lite',
+        repo: 'enilu/material-admin',
         docsDir: 'docs',
         editLinks: true,
         editLinkText: '编辑此页面！',
         nav: [
             {text: '文档', link: '/'},
-            {text: '公告', link: 'https://www.oschina.net/p/guns-lite'},
-            {text: '案例',link:'https://github.com/enilu/guns-lite/issues/4'},
+            {text: '公告', link: 'https://www.oschina.net/p/material-admin'},
             {text: '捐赠',link:'/donate'},
             {text: '资源',link:'/resource'},
             {text: '周边',
@@ -25,8 +24,7 @@ module.exports = {
                     {text: '代码生成',link:'/ecosystem/code-generator'},
                     {text: '数据库文档生成',link:'/ecosystem/database-doc-generator'},
                 ]
-            },
-            {text: '项目主页', link: 'https://github.com/enilu/guns-lite'},
+            }
 
 
         ],

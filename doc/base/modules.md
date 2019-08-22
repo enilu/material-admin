@@ -4,12 +4,10 @@
 
 ## material-admin模块
 
-material-admin包含6个核心模块：
-- guns-admin 一个成熟的后台管理系统，完全具备了后台管理系统的基本功能
-- guns-utils 工具包
-- guns-dao dao层
-- guns-entity 实体层
-- guns-service 服务层
+material-admin包含3个核心模块：
+- material-core 项目核心模块，包括实体层，dao层，service层，以及各种工具类
+- material-generator 代码生成模块，配合IDEA Intellij的代码生成插件：webflash-generator可以提高开发效率
+- material-manage 项目web模块，包含项目页面内容，controller层 
 
-其中guns-admin是一个java web模块
+其中material-manage是一个java web模块
 其他都为java se模块，

@@ -4,41 +4,36 @@
 
 ## material-admin模块
 
-material-admin包含5个核心模块：
-- guns-admin
-- guns-utils
-- guns-dao
-- guns-entity
-- guns-service
+material-admin包含3个核心模块：
+- material-core
+- material-generator
+- material-manage 
 
-其中guns-admin一个java web模块，其他都为java se项目；
-具体每个包的作用通过名字即可看出包含的功能分别为：后台管理、工具包、数据库操作层、实体层、
-服务层
+其中guns-manage一个java web模块，其他都为java se项目；
+具体每个包的作用通过名字即可看出包含的功能分别为：核心模块，代码生成模块，web管理模块
+ 
 
-![modules](./img/modules.jpg)
+具体每个包里的细节不详细介绍，开发人员可以在使用过程中逐渐了解，本身代码量并不大，熟悉起来不需要花费太多时间。
 
+这里仅详细说明下material-manage的内部结构，毕竟日常开发主要是基于该模块来做的。
 
-具体每个包里的细节不详细介绍，开发人员可以在使用过程中主键料件，本身代码量并不大，了解起来不需要花费太多时间。
+## material-manage
+material-manage是一个标准的java web项目
 
-这里仅详细说明下guns-admin的内部结构，毕竟日常开发主要是基于该模块来做的。
-
-## guns-admin
-guns-admin是一个标准的web项目
-
-![guns-admin](./img/guns-admin.jpg)
+![material-manage](./img/guns-admin.jpg)
 
 目录结构包含：
 
 - src/main/java  java源码
 - src/main/resources  配置文件
 - src/webapp  web页面和静态文件资源
-这里介绍下guns-admin的基本目录和开发流程
+这里介绍下material-manage的基本目录和开发流程
 
 ### src/main/java/ 源代码
 
 目录结构如下所示：
 
-![guns-admin](./img/guns-src.jpg)
+![material-manage](./img/guns-src.jpg)
 
 - **common** 该package 封装了一些工具的类库，如一些注解，常量、枚举，异常等公共类
 - **config** 该package 包含项目支持各种特性的相关配置。例如：
@@ -47,16 +42,16 @@ guns-admin是一个标准的web项目
     - Session配置
     - Shiro配置
     - Beetl模版配置
-- **core** 该package是项目的核心，包含注入数据源管理、缓存管理、模版管理、aop，监听器以及分页工具、各种工具类（这里自所以有封装自己的工具类而不是放在guns-utils中，是因为这些工具类是与guns-admin紧密相关的工具类，并不适用于其他模块）。
+- **core** 该package是项目的核心，包含注入数据源管理、缓存管理、模版管理、aop，监听器以及分页工具、各种工具类（这里自所以有封装自己的工具类而不是放在guns-utils中，是因为这些工具类是与material-manage紧密相关的工具类，并不适用于其他模块）。
 当然开发人员可以根据项目实际情况做二次调整和封装。
 
 - **modular** 该pakcage存放和业务相关的代码。
 比如目前提供了一个**system模块**，主要包含诸如：用户、角色、权限、日志等管理功能的系统管理功能。
 
 system包中除了controller包是必须的，其他包都是根据具体情况选择是否需要。
-业务相关的service、dao、entity写到对应的guns-service/dao/entity 模块中，而不是写在guns-admin模块中。
+业务相关的service、dao、entity写到对应的guns-service/dao/entity 模块中，而不是写在material-manage模块中。
 
-**这样设计的目的是因为**，大多数实际项目不仅包含后台管理，还可能包括面向客户端的服务，如app或者微信公众号或者pc站，这些服务也需要一套平台比如针对app和微信公众号可能需要一套api系统，那么这时候api系统就可以和guns-admin共用service、dao和实体层。
+**这样设计的目的是因为**，大多数实际项目不仅包含后台管理，还可能包括面向客户端的服务，如app或者微信公众号或者pc站，这些服务也需要一套平台比如针对app和微信公众号可能需要一套api系统，那么这时候api系统就可以和material-manage共用service、dao和实体层。
 
 
 
@@ -64,7 +59,7 @@ system包中除了controller包是必须的，其他包都是根据具体情况�
  
 目录结构如下所示：
 
-![guns-admin](./img/guns-web.jpg)
+![material-manage](./img/guns-web.jpg)
 
 - static 目录为静态资源
     - css、fonts，img，js分别为公共的样式、字体，图片，js资源

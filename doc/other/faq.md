@@ -7,9 +7,7 @@
 java -Dfile.encoding=utf-8 -jar xxxxxxx.jar
 ```
 
-## 打包guns-admin-vuejs总是下载依赖包失败
-使用淘宝源
-```shell
-npm install --registry=https://registry.npm.taobao.org
-```
+## 使用代码生成器的时候总是报找不到Generator类或者找不到code.json配置文件
+
+下载项目后首先mvn package 保证项目能构建并打包成功再使用代码生成器
 

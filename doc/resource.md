@@ -3,18 +3,22 @@
 
 
 ## 前端
+### Material Admin
+- [https://www.sucaihuo.com/templates/3963](https://www.sucaihuo.com/templates/3963)
+- 本项目使用该框架，开发过程中可以参考该框架，该框架封装很多常用的material风格的组件
+
 ### Fontawesome 图标库
 - [http://www.fontawesome.com.cn/faicons](http://www.fontawesome.com.cn/faicons)
-- guns-admin中使用了fontawesome的图标库，如果你想用一些图标，又不知道用哪些合适，可以通过下面网站，找到合适的图标和样式名
+- material-manage中使用了fontawesome的图标库，如果你想用一些图标，又不知道用哪些合适，可以通过下面网站，找到合适的图标和样式名
 - 比如菜单管理，在添加菜单的时候，有个图标的配置项:**图标**,这里就要求默认使用fontawesome的图标库样式。<img src="./img/resource/menu_1.jpg" align=center />
 
 ### Bootstrap
 - [https://v3.bootcss.com/css/](https://v3.bootcss.com/css/)
-- guns-admin中使用了Bootstrap作为前端样式库，Bootstrap有丰富的样式，插件和组件，开发过程中可以参考在线文档，方便搞笑。
+- material-manage中使用了Bootstrap作为前端样式库，Bootstrap有丰富的样式，插件和组件，开发过程中可以参考在线文档，方便搞笑。
 
 ### Beetl
 - [http://ibeetl.com/guide](http://ibeetl.com/guide)
-- guns-admin使用Beetl做为模板引擎，Beetl是一个很好用的国产模板引擎。使用中有什么问题也可以去其官方论坛提问[http://bbs.ibeetl.com/](http://bbs.ibeetl.com/)
+- material-manage使用Beetl做为模板引擎，Beetl是一个很好用的国产模板引擎。使用中有什么问题也可以去其官方论坛提问[http://bbs.ibeetl.com/](http://bbs.ibeetl.com/)
 
 ### 阿里巴巴矢量图库
 - [https://iconfont.cn](https://iconfont.cn)
