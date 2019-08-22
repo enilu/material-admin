@@ -12,6 +12,12 @@
     <artifactId>material-core</artifactId>
     <dependencies>
         <dependency>
+            <groupId>cn.enilu</groupId>
+            <artifactId>material-generator</artifactId>
+            <version>${project.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <exclusions>
