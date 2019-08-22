@@ -1,6 +1,6 @@
 package cn.enilu.material.admin.modular.system.controller;
 
-import cn.enilu.material.admin.config.properties.GunsProperties;
+import cn.enilu.material.admin.config.properties.AppProperties;
 import cn.enilu.material.admin.core.util.FileUtil;
 import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
@@ -29,7 +29,7 @@ import java.io.IOException;
 public class KaptchaController {
 
     @Resource
-    private GunsProperties gunsProperties;
+    private AppProperties appProperties;
 
     @Autowired
     Producer producer;
@@ -99,7 +99,7 @@ public class KaptchaController {
      */
     @RequestMapping("/{pictureId}")
     public void renderPicture(@PathVariable("pictureId") String pictureId, HttpServletResponse response) {
-        String path = gunsProperties.getFileUploadPath() + pictureId;
+        String path = appProperties.getFileUploadPath() + pictureId;
         try {
             byte[] bytes = FileUtil.toByteArray(path);
             response.getOutputStream().write(bytes);

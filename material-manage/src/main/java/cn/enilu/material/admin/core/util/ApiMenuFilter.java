@@ -1,7 +1,7 @@
 package cn.enilu.material.admin.core.util;
 
 import cn.enilu.material.bean.constant.Const;
-import cn.enilu.material.admin.config.properties.GunsProperties;
+import cn.enilu.material.admin.config.properties.AppProperties;
 import cn.enilu.material.bean.vo.SpringContextHolder;
 import cn.enilu.material.bean.vo.node.MenuNode;
 
@@ -20,8 +20,8 @@ public class ApiMenuFilter extends MenuNode {
     public static List<MenuNode> build(List<MenuNode> nodes) {
 
         //如果关闭了接口文档,则不显示接口文档菜单
-        GunsProperties gunsProperties = SpringContextHolder.getBean(GunsProperties.class);
-        if (!gunsProperties.getSwaggerOpen()) {
+        AppProperties appProperties = SpringContextHolder.getBean(AppProperties.class);
+        if (!appProperties.getSwaggerOpen()) {
             List<MenuNode> menuNodesCopy = new ArrayList<>();
             for (MenuNode menuNode : nodes) {
                 if (Const.API_MENU_NAME.equals(menuNode.getName())) {

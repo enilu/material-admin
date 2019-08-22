@@ -1,0 +1,104 @@
+/**
+ * ${table.Label}管理初始化
+ */
+var ${table.entityClassName} = {
+    id: "${table.entityClassName}Table",
+    seItem: null,
+    table: null,
+    layerIndex: -1
+};
+
+/**
+ * 初始化表格的列
+ */
+${table.entityClassName}.initColumn = function () {
+    return [
+        {field: 'selectItem', checkbox: true},
+        {title: 'ID', field: 'id', visible: true, align: 'center', valign: 'middle'},
+#foreach ($column in $table.LabeledColumns)
+    #if($velocityCount==1)
+        {title: '${column.label}', field: '${column.FieldName}', visible: true, align: 'center', valign: 'middle',formatter:function(data,row){
+                return '<a href="javascript:;" onclick="${table.entityClassName}.open${table.entityClassName}Detail('+row.id+')">'+data+'</a>';
+         }},
+    #else
+        {title: '${column.label}', field: '${column.FieldName}', visible: true, align: 'center', valign: 'middle'},
+    #end
+#end
+        {title: '操作',formatter:function(data,row){
+                return '<button type="button" class="btn btn-info btn-icon waves-effect waves-circle" onclick="${table.entityClassName}.delete('+row.id+')" title="删除"><span class="zmdi zmdi-delete"></span></button>';
+        }}
+    ];
+};
+
+/**
+ * 点击添加${table.Label}
+ */
+${table.entityClassName}.openAdd${table.entityClassName} = function () {
+    var index = layer.open({
+        type: 2,
+        title: '添加${table.Label}',
+        area: ['65%', '65%'], //宽高
+        fix: false, //不固定
+        maxmin: true,
+        content: Feng.ctxPath + '${table.UriPrefix}/add'
+    });
+    this.layerIndex = index;
+};
+
+/**
+ * 打开查看${table.Label}详情
+ */
+${table.entityClassName}.open${table.entityClassName}Detail = function (id) {
+    var index = layer.open({
+        type: 2,
+        title: '系统参数详情',
+        area: ['65%', '65%'], //宽高
+        fix: false, //不固定
+        maxmin: true,
+        content: Feng.ctxPath + '${table.UriPrefix}/edit/' + id
+    });
+    this.layerIndex = index;
+
+};
+
+/**
+ * 删除${table.Label}
+ */
+${table.entityClassName}.delete = function (id) {
+    var operation = function() {
+        var ajax = new $ax(Feng.ctxPath + "${table.UriPrefix}/delete", function (data) {
+            Feng.success("删除成功!");
+            ${table.entityClassName}.
+            table.refresh();
+        }, function (data) {
+            Feng.error("删除失败!" + data.responseJSON.message + "!");
+        });
+        ajax.set("id", id);
+        ajax.start();
+    }
+    Feng.confirm("确认删除该记录?", operation);
+
+};
+
+/**
+ * 查询${table.Label}列表
+ */
+${table.entityClassName}.search = function () {
+    var queryData = {};
+    queryData['name'] = $("#name").val();
+    ${table.entityClassName}.table.refresh({query: queryData});
+};
+/**
+ * 重置查询条件
+ */
+Boy.reset = function () {
+    $('#name').val('');
+    this.search();
+};
+
+$(function () {
+    var defaultColunms = ${table.entityClassName}.initColumn();
+    var table = new BSTable(${table.entityClassName}.id, "${table.UriPrefix}/list", defaultColunms);
+    table.setPaginationType("server");
+    ${table.entityClassName}.table = table.init();
+});

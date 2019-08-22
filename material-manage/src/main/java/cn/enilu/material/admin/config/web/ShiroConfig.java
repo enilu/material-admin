@@ -1,6 +1,6 @@
 package cn.enilu.material.admin.config.web;
 
-import cn.enilu.material.admin.config.properties.GunsProperties;
+import cn.enilu.material.admin.config.properties.AppProperties;
 import cn.enilu.material.shiro.ShiroDbRealm;
 import org.apache.shiro.cache.CacheManager;
 import org.apache.shiro.cache.ehcache.EhCacheManager;
@@ -51,7 +51,7 @@ public class ShiroConfig {
      * spring session管理器（多机环境）
      */
     @Bean
-    @ConditionalOnProperty(prefix = "guns", name = "spring-session-open", havingValue = "true")
+    @ConditionalOnProperty(prefix = "apps", name = "spring-session-open", havingValue = "true")
     public ServletContainerSessionManager servletContainerSessionManager() {
         return new ServletContainerSessionManager();
     }
@@ -60,12 +60,12 @@ public class ShiroConfig {
      * session管理器(单机环境)
      */
     @Bean
-    @ConditionalOnProperty(prefix = "guns", name = "spring-session-open", havingValue = "false")
-    public DefaultWebSessionManager defaultWebSessionManager(CacheManager cacheShiroManager, GunsProperties gunsProperties) {
+    @ConditionalOnProperty(prefix = "apps", name = "spring-session-open", havingValue = "false")
+    public DefaultWebSessionManager defaultWebSessionManager(CacheManager cacheShiroManager, AppProperties appProperties) {
         DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();
         sessionManager.setCacheManager(cacheShiroManager);
-        sessionManager.setSessionValidationInterval(gunsProperties.getSessionValidationInterval() * 1000);
-        sessionManager.setGlobalSessionTimeout(gunsProperties.getSessionInvalidateTime() * 1000);
+        sessionManager.setSessionValidationInterval(appProperties.getSessionValidationInterval() * 1000);
+        sessionManager.setGlobalSessionTimeout(appProperties.getSessionInvalidateTime() * 1000);
         sessionManager.setDeleteInvalidSessions(true);
         sessionManager.setSessionValidationSchedulerEnabled(true);
         Cookie cookie = new SimpleCookie(ShiroHttpSession.DEFAULT_SESSION_ID_NAME);

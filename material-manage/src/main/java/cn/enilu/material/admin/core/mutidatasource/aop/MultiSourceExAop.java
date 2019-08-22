@@ -26,7 +26,7 @@ import java.lang.reflect.Method;
  */
 @Aspect
 @Component
-@ConditionalOnProperty(prefix = "guns", name = "muti-datasource-open", havingValue = "true")
+@ConditionalOnProperty(prefix = "apps", name = "muti-datasource-open", havingValue = "true")
 public class MultiSourceExAop implements Ordered {
 
     private Logger log = LoggerFactory.getLogger(this.getClass());

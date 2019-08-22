@@ -1,7 +1,7 @@
 package cn.enilu.material.factory;
 
 import cn.enilu.material.bean.enumeration.BizExceptionEnum;
-import cn.enilu.material.bean.exception.GunsException;
+import cn.enilu.material.bean.exception.ApplicationException;
 import cn.enilu.material.service.system.IConstantFactory;
 import cn.enilu.material.service.system.impl.ConstantFactory;
 import org.slf4j.Logger;
@@ -30,7 +30,7 @@ public class DictFieldWarpperFactory {
                 Object result = method.invoke(me, Long.valueOf(field.toString()));
                 return result;
             } catch (Exception e1) {
-                throw new GunsException(BizExceptionEnum.ERROR_WRAPPER_FIELD);
+                throw new ApplicationException(BizExceptionEnum.ERROR_WRAPPER_FIELD);
             }
         }
     }

@@ -1,8 +1,8 @@
 package cn.enilu.material.admin.core.aop;
 
-import cn.enilu.material.bean.exception.GunsException;
+import cn.enilu.material.bean.exception.ApplicationException;
 import cn.enilu.material.admin.core.base.tips.ErrorTip;
-import cn.enilu.material.bean.exception.GunsExceptionEnum;
+import cn.enilu.material.bean.exception.ExceptionEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -25,10 +25,10 @@ public class BaseControllerExceptionHandler {
      *
      * @author fengshuonan
      */
-    @ExceptionHandler(GunsException.class)
+    @ExceptionHandler(ApplicationException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ResponseBody
-    public ErrorTip notFount(GunsException e) {
+    public ErrorTip notFount(ApplicationException e) {
         log.error("业务异常:", e);
         return new ErrorTip(e.getCode(), e.getMessage());
     }
@@ -43,7 +43,7 @@ public class BaseControllerExceptionHandler {
     @ResponseBody
     public ErrorTip notFount(RuntimeException e) {
         log.error("运行时异常:", e);
-        return new ErrorTip(GunsExceptionEnum.SERVER_ERROR.getCode(), GunsExceptionEnum.SERVER_ERROR.getMessage());
+        return new ErrorTip(ExceptionEnum.SERVER_ERROR.getCode(), ExceptionEnum.SERVER_ERROR.getMessage());
     }
 
 }
