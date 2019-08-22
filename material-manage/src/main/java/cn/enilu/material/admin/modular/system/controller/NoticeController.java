@@ -5,7 +5,7 @@ import cn.enilu.material.bean.core.BussinessLog;
 import cn.enilu.material.bean.dictmap.NoticeMap;
 import cn.enilu.material.bean.entity.system.Notice;
 import cn.enilu.material.bean.enumeration.BizExceptionEnum;
-import cn.enilu.material.bean.exception.GunsException;
+import cn.enilu.material.bean.exception.ApplicationException;
 import cn.enilu.material.service.system.LogObjectHolder;
 import cn.enilu.material.service.system.NoticeService;
 import cn.enilu.material.service.system.impl.ConstantFactory;
@@ -100,7 +100,7 @@ public class NoticeController extends BaseController {
     @BussinessLog(value = "新增通知",key = "title",dict = NoticeMap.class)
     public Object add(Notice notice) {
         if (ToolUtil.isOneEmpty(notice, notice.getTitle(), notice.getContent())) {
-            throw new GunsException(BizExceptionEnum.REQUEST_NULL);
+            throw new ApplicationException(BizExceptionEnum.REQUEST_NULL);
         }
        noticeService.saveOrUpdate(notice);
         return SUCCESS_TIP;
@@ -130,7 +130,7 @@ public class NoticeController extends BaseController {
     @BussinessLog(value = "修改通知",key = "title",dict = NoticeMap.class)
     public Object update(Notice notice) {
         if (ToolUtil.isOneEmpty(notice, notice.getId(), notice.getTitle(), notice.getContent())) {
-            throw new GunsException(BizExceptionEnum.REQUEST_NULL);
+            throw new ApplicationException(BizExceptionEnum.REQUEST_NULL);
         }
         Notice old = ConstantFactory.me().getNotice(notice.getId());
         old.setTitle(notice.getTitle());

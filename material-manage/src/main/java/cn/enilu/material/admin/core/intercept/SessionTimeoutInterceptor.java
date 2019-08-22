@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
  */
 @Aspect
 @Component
-@ConditionalOnProperty(prefix = "guns", name = "session-open", havingValue = "true")
+@ConditionalOnProperty(prefix = "apps", name = "session-open", havingValue = "true")
 public class SessionTimeoutInterceptor extends BaseController {
 
     @Pointcut("execution(* cn.enilu.material.admin.*..controller.*.*(..))")

@@ -1,0 +1,27 @@
+@layout("/common/layout.html"){
+<div class="block-header">
+    <h2>${table.Label}管理</h2>
+</div>
+#set($ctxPath = '${ctxPath}')
+<div class="card">
+    <div class="card-body card-padding">
+        <div class="row row-lg">
+            <div class="col-sm-12">
+                <div class="hidden-xs" id="${table.entityClassName}TableToolbar" role="group">
+                    <div class="col-sm-3">
+                        <#NameCon id="name" name="名称" />
+                    </div>
+                    <#button name="搜索" icon="fa-search" clickFun="${table.entityClassName}.search()"/>
+                    <#button name="重置" icon="fa-refresh" clickFun="${table.entityClassName}.reset()" space="true"/>
+
+                    @if(shiro.hasPermission("${table.UriPrefix}/add")){
+                    <#button name="添加" icon="fa-plus" clickFun="${table.entityClassName}.openAdd${table.entityClassName}()" space="true"/>
+                    @}
+                </div>
+                <#table id="${table.entityClassName}Table"/>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="$ctxPath/static/modular${table.UriPrefix}/${table.entityNameLowerFirstChar}.js"></script>
+@}

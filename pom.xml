@@ -11,6 +11,7 @@
     <modules>
         <module>material-core</module>
         <module>material-manage</module>
+        <module>material-generator</module>
     </modules>
 
     <properties>

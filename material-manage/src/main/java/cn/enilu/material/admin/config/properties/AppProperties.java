@@ -7,16 +7,16 @@ import org.springframework.stereotype.Component;
 import java.io.File;
 
 /**
- * guns项目配置
+ * 项目配置
  *
  * @author enilu.cn
  * @Date 2017/5/23 22:31
  */
 @Component
-@ConfigurationProperties(prefix = GunsProperties.PREFIX)
-public class GunsProperties {
+@ConfigurationProperties(prefix = AppProperties.PREFIX)
+public class AppProperties {
 
-    public static final String PREFIX = "guns";
+    public static final String PREFIX = "apps";
 
     private Boolean kaptchaOpen = false;
 

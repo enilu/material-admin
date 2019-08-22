@@ -8,7 +8,7 @@ import cn.enilu.material.bean.enumeration.BizExceptionEnum;
 import cn.enilu.material.admin.core.base.controller.BaseController;
 import cn.enilu.material.admin.core.base.tips.Tip;
 import cn.enilu.material.admin.core.cache.CacheKit;
-import cn.enilu.material.bean.exception.GunsException;
+import cn.enilu.material.bean.exception.ApplicationException;
 import cn.enilu.material.service.system.UserService;
 import cn.enilu.material.utils.BeanUtil;
 import cn.enilu.material.warpper.RoleWarpper;
@@ -75,7 +75,7 @@ public class RoleController extends BaseController {
     @RequestMapping(value = "/role_edit/{roleId}")
     public String roleEdit(@PathVariable Long roleId, Model model) {
         if (ToolUtil.isEmpty(roleId)) {
-            throw new GunsException(BizExceptionEnum.REQUEST_NULL);
+            throw new ApplicationException(BizExceptionEnum.REQUEST_NULL);
         }
         Role role = roleService.get(roleId);
         model.addAttribute(role);
@@ -92,7 +92,7 @@ public class RoleController extends BaseController {
     @RequestMapping(value = "/role_assign/{roleId}")
     public String roleAssign(@PathVariable("roleId") Long roleId, Model model) {
         if (ToolUtil.isEmpty(roleId)) {
-            throw new GunsException(BizExceptionEnum.REQUEST_NULL);
+            throw new ApplicationException(BizExceptionEnum.REQUEST_NULL);
         }
         model.addAttribute("roleId", roleId);
         model.addAttribute("roleName", ConstantFactory.me().getSingleRoleName(roleId));
@@ -124,7 +124,7 @@ public class RoleController extends BaseController {
     @ResponseBody
     public Tip add(@Valid Role role, BindingResult result) {
         if (result.hasErrors()) {
-            throw new GunsException(BizExceptionEnum.REQUEST_NULL);
+            throw new ApplicationException(BizExceptionEnum.REQUEST_NULL);
         }
         role.setId(null);
         roleService.insert(role);
@@ -140,7 +140,7 @@ public class RoleController extends BaseController {
     @ResponseBody
     public Tip edit(@Valid Role role, BindingResult result) {
         if (result.hasErrors()) {
-            throw new GunsException(BizExceptionEnum.REQUEST_NULL);
+            throw new ApplicationException(BizExceptionEnum.REQUEST_NULL);
         }
         this.roleService.update(role);
 
@@ -158,12 +158,12 @@ public class RoleController extends BaseController {
     @ResponseBody
     public Tip remove(@RequestParam Long roleId) {
         if (ToolUtil.isEmpty(roleId)) {
-            throw new GunsException(BizExceptionEnum.REQUEST_NULL);
+            throw new ApplicationException(BizExceptionEnum.REQUEST_NULL);
         }
 
         //不能删除超级管理员角色
         if(roleId.equals(Const.ADMIN_ROLE_ID)){
-            throw new GunsException(BizExceptionEnum.CANT_DELETE_ADMIN);
+            throw new ApplicationException(BizExceptionEnum.CANT_DELETE_ADMIN);
         }
 
         //缓存被删除的角色名称
@@ -183,7 +183,7 @@ public class RoleController extends BaseController {
     @ResponseBody
     public Tip view(@PathVariable Long roleId) {
         if (ToolUtil.isEmpty(roleId)) {
-            throw new GunsException(BizExceptionEnum.REQUEST_NULL);
+            throw new ApplicationException(BizExceptionEnum.REQUEST_NULL);
         }
        roleService.get(roleId);
         return SUCCESS_TIP;
@@ -198,7 +198,7 @@ public class RoleController extends BaseController {
     @ResponseBody
     public Tip setAuthority(@RequestParam("roleId") Long roleId, @RequestParam("ids") String ids) {
         if (ToolUtil.isOneEmpty(roleId)) {
-            throw new GunsException(BizExceptionEnum.REQUEST_NULL);
+            throw new ApplicationException(BizExceptionEnum.REQUEST_NULL);
         }
         roleService.setAuthority(roleId, ids);
         return SUCCESS_TIP;

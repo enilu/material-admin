@@ -1,8 +1,8 @@
 package cn.enilu.material.admin.core.util;
 
-import cn.enilu.material.bean.exception.GunsException;
+import cn.enilu.material.bean.exception.ApplicationException;
 import com.alibaba.fastjson.JSON;
-import cn.enilu.material.bean.exception.GunsExceptionEnum;
+import cn.enilu.material.bean.exception.ExceptionEnum;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -26,7 +26,7 @@ public class RenderUtil {
             PrintWriter writer = response.getWriter();
             writer.write(JSON.toJSONString(jsonObject));
         } catch (IOException e) {
-            throw new GunsException(GunsExceptionEnum.WRITE_ERROR);
+            throw new ApplicationException(ExceptionEnum.WRITE_ERROR);
         }
     }
 }

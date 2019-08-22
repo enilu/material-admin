@@ -6,7 +6,7 @@ import cn.enilu.material.bean.constant.factory.PageFactory;
 import cn.enilu.material.bean.dictmap.CommonDict;
 import cn.enilu.material.bean.entity.message.MessageSender;
 import cn.enilu.material.bean.enumeration.BizExceptionEnum;
-import cn.enilu.material.bean.exception.GunsException;
+import cn.enilu.material.bean.exception.ApplicationException;
 import cn.enilu.material.bean.vo.query.Page;
 import cn.enilu.material.service.message.MessagesenderService;
 import cn.enilu.material.utils.ToolUtil;
@@ -72,9 +72,9 @@ public class MessagesenderController extends BaseController {
     @RequestMapping(method = RequestMethod.DELETE)
     @BussinessLog(value = "删除消息发送器", key = "id", dict = CommonDict.class)
     @ResponseBody
-    public Object remove(Long id) throws GunsException {
+    public Object remove(Long id) throws ApplicationException {
         if (ToolUtil.isEmpty(id)) {
-            throw new GunsException(BizExceptionEnum.REQUEST_NULL);
+            throw new ApplicationException(BizExceptionEnum.REQUEST_NULL);
         }
         messagesenderService.delete(id);
         return SUCCESS_TIP;
