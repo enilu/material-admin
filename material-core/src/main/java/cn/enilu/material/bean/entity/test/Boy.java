@@ -1,13 +1,10 @@
 package cn.enilu.material.bean.entity.test;
-
-
 import cn.enilu.material.bean.entity.BaseEntity;
 import lombok.Data;
 import org.hibernate.annotations.Table;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-
 /**
  * 该实体用于测试生成代码
  */

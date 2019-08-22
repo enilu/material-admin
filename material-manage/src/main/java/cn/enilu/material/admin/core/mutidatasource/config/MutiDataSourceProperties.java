@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * @date 2017-08-16 10:02
  */
 @Component
-@ConfigurationProperties(prefix = "guns.muti-datasource")
+@ConfigurationProperties(prefix = "apps.muti-datasource")
 public class MutiDataSourceProperties {
 
     private String defaultDataSourceName = "dataSourceGuns";

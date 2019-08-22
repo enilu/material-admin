@@ -6,7 +6,7 @@ import cn.enilu.material.bean.core.Permission;
 import cn.enilu.material.bean.dictmap.DeptDict;
 import cn.enilu.material.bean.entity.system.Dept;
 import cn.enilu.material.bean.enumeration.BizExceptionEnum;
-import cn.enilu.material.bean.exception.GunsException;
+import cn.enilu.material.bean.exception.ApplicationException;
 import cn.enilu.material.bean.vo.node.ZTreeNode;
 import cn.enilu.material.service.system.DeptService;
 import cn.enilu.material.service.system.LogObjectHolder;
@@ -89,7 +89,7 @@ public class DeptController extends BaseController {
     @ResponseBody
     public Object add(Dept dept) {
         if (ToolUtil.isOneEmpty(dept, dept.getSimplename())) {
-            throw new GunsException(BizExceptionEnum.REQUEST_NULL);
+            throw new ApplicationException(BizExceptionEnum.REQUEST_NULL);
         }
         //完善pids,根据pid拿到pid的pids
         deptService.deptSetPids(dept);
@@ -126,7 +126,7 @@ public class DeptController extends BaseController {
     @ResponseBody
     public Object update(Dept dept) {
         if (ToolUtil.isEmpty(dept) || dept.getId() == null) {
-            throw new GunsException(BizExceptionEnum.REQUEST_NULL);
+            throw new ApplicationException(BizExceptionEnum.REQUEST_NULL);
         }
         deptService.deptSetPids(dept);
         deptService.saveOrUpdate(dept);

@@ -8,7 +8,7 @@ import cn.enilu.material.bean.dictmap.CommonDict;
 import cn.enilu.material.bean.entity.message.MessageSender;
 import cn.enilu.material.bean.entity.message.MessageTemplate;
 import cn.enilu.material.bean.enumeration.BizExceptionEnum;
-import cn.enilu.material.bean.exception.GunsException;
+import cn.enilu.material.bean.exception.ApplicationException;
 import cn.enilu.material.bean.vo.query.Page;
 import cn.enilu.material.service.message.MessagesenderService;
 import cn.enilu.material.service.message.MessagetemplateService;
@@ -83,7 +83,7 @@ public class MessagetemplateController extends BaseController {
     @ResponseBody
     public Object remove(Long id) {
         if (ToolUtil.isEmpty(id)) {
-            throw new GunsException(BizExceptionEnum.REQUEST_NULL);
+            throw new ApplicationException(BizExceptionEnum.REQUEST_NULL);
         }
         messagetemplateService.delete(id);
         return SUCCESS_TIP;

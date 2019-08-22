@@ -3,7 +3,7 @@ package cn.enilu.material.service.system;
 
 import cn.enilu.material.bean.entity.system.Menu;
 import cn.enilu.material.bean.enumeration.BizExceptionEnum;
-import cn.enilu.material.bean.exception.GunsException;
+import cn.enilu.material.bean.exception.ApplicationException;
 import cn.enilu.material.bean.vo.node.MenuNode;
 import cn.enilu.material.bean.vo.node.Node;
 import cn.enilu.material.bean.vo.node.ZTreeNode;
@@ -146,6 +146,7 @@ public class MenuService  extends BaseService<Menu,Long,MenuRepository> {
             node.setpId(Long.valueOf(source[1].toString()));
             node.setName(source[2].toString());
             node.setIsOpen(Boolean.valueOf(source[3].toString()));
+            node.setCode(source[4].toString());
             nodes.add(node);
         }
         return nodes;
@@ -180,7 +181,7 @@ public class MenuService  extends BaseService<Menu,Long,MenuRepository> {
 
             //如果编号和父编号一致会导致无限递归
             if (menu.getCode().equals(menu.getPcode())) {
-                throw new GunsException(BizExceptionEnum.MENU_PCODE_COINCIDENCE);
+                throw new ApplicationException(BizExceptionEnum.MENU_PCODE_COINCIDENCE);
             }
 
             menu.setLevels(pLevels + 1);
