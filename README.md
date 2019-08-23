@@ -5,7 +5,8 @@ English | [简体中文](./README.zh-CN.md)
 [materail-admin](https://github.com/enilu/material-admin) is a Materail Design Admin Framework based on [Spring Boot2](https://spring.io/projects/spring-boot/) and [Bootstrap](https://www.bootcss.com/). 
 It includes basic functions commonly used in the background of rights management, configuration management, organization, users, scheduled tasks, and message management. Refining a typical business model can help you quickly build an enterprise back-end product system.
 
-- [Online Demo](http://material.enilu.cn) 
+- [Online Demo](http://material.enilu.cn)
+- Separate versions of the front and rear ends are also provided.[web-flash](http://enilu.github.com/web-flash) 
  
 ## Preparation
 

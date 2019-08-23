@@ -4,6 +4,7 @@
 
 - [在线预览](http://material.enilu.cn) 
 - [gitee地址](https://gitee.com/enilu/material-admin)
+- 另提供前后端分离版本[web-flash](http://enilu.gitee.io/web-flash)
  
 ## 准备
 
