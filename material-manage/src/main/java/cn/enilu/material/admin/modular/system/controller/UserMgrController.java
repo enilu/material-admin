@@ -13,6 +13,7 @@ import cn.enilu.material.bean.dto.UserDto;
 import cn.enilu.material.bean.entity.system.User;
 import cn.enilu.material.bean.enumeration.BizExceptionEnum;
 import cn.enilu.material.bean.exception.ApplicationException;
+import cn.enilu.material.bean.exception.ExceptionEnum;
 import cn.enilu.material.factory.UserFactory;
 import cn.enilu.material.service.system.LogObjectHolder;
 import cn.enilu.material.service.system.UserService;

@@ -1,6 +1,7 @@
 package cn.enilu.material.admin.modular.system.controller;
 
 import cn.enilu.material.admin.core.base.controller.BaseController;
+import cn.enilu.material.admin.core.base.tips.ErrorTip;
 import cn.enilu.material.admin.core.base.tips.Tip;
 import cn.enilu.material.admin.core.support.BeanKit;
 import cn.enilu.material.bean.core.BussinessLog;
@@ -11,6 +12,7 @@ import cn.enilu.material.bean.dictmap.MenuDict;
 import cn.enilu.material.bean.entity.system.Menu;
 import cn.enilu.material.bean.enumeration.BizExceptionEnum;
 import cn.enilu.material.bean.exception.ApplicationException;
+import cn.enilu.material.bean.exception.ExceptionEnum;
 import cn.enilu.material.bean.vo.node.ZTreeNode;
 import cn.enilu.material.service.system.LogObjectHolder;
 import cn.enilu.material.service.system.MenuService;
@@ -97,8 +99,8 @@ public class MenuController extends BaseController {
     @BussinessLog(value = "修改菜单", key = "name", dict = MenuDict.class)
     @ResponseBody
     public Tip edit(@Valid Menu menu, BindingResult result) {
-        if (result.hasErrors()) {
-            throw new ApplicationException(BizExceptionEnum.REQUEST_NULL);
+        if(1==1){
+            throw new ApplicationException(ExceptionEnum.TEST_NOT_ALLOWED);
         }
         //设置父级菜单编号
         menuService.menuSetPcode(menu);
@@ -164,6 +166,9 @@ public class MenuController extends BaseController {
     @BussinessLog(value = "删除菜单", key = "menuId", dict = MenuDict.class)
     @ResponseBody
     public Tip remove(@RequestParam Long menuId) {
+        if(1==1){
+            throw new ApplicationException(ExceptionEnum.TEST_NOT_ALLOWED);
+        }
         if (ToolUtil.isEmpty(menuId)) {
             throw new ApplicationException(BizExceptionEnum.REQUEST_NULL);
         }

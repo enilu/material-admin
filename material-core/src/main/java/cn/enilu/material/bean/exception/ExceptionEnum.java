@@ -24,6 +24,7 @@ public enum ExceptionEnum implements ServiceExceptionEnum{
 	 */
 	REQUEST_NULL(400, "请求有错误"),
 	SERVER_ERROR(500, "服务器异常"),
+	TEST_NOT_ALLOWED(400, "演示环境不允许该操作"),
 
 	TASK_CONFIG_ERROR(500, "定时任务配置错误");
 
