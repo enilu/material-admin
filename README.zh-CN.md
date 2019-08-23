@@ -61,6 +61,9 @@
 
 [在线 Demo](http://material.enilu.cn)
 
+## 文档
+[https://enilu.gitee.io/material-admin](https://enilu.gitee.io/material-admin)
+
 ## License
 
 [MIT](https://github.com/enilu/material-admin/blob/master/LICENSE)

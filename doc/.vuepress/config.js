@@ -71,11 +71,7 @@ module.exports = {
                     '/feature/menu',
                     '/feature/dict',
                     '/feature/log',
-                    '/feature/permissionMgr',
-                    '/feature/monitor',
-                    '/feature/sysConfig',
-                    '/feature/fileMgr'
-                ]
+                    '/feature/monitor'
             },{
                 title: '进阶',
                 collapsable: false,
