@@ -54,6 +54,10 @@ user/password:admin/admin
 
 [http://material.enilu.cn](http://material.enilu.cn)
 
+## 交流
+- Bugs: [Issues](https://github.com/enilu/material-admin/issues/new)
+- QQ:752844606
+- Gitter: [Gitter channel](https://gitter.im/springboot-material-admin/community)
 
 ## License
 

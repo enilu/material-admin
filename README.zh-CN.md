@@ -64,6 +64,11 @@
 ## 文档
 [https://enilu.gitee.io/material-admin](https://enilu.gitee.io/material-admin)
 
+## 交流
+- Bugs: [Issues](https://gitee.com/enilu/material-admin/issues/new)
+- QQ: 欢迎加入qq交流群 752844606
+- Gitter: [Gitter channel](https://gitter.im/springboot-material-admin/community)
+
 ## License
 
 [MIT](https://github.com/enilu/material-admin/blob/master/LICENSE)
