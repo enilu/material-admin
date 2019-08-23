@@ -44,7 +44,7 @@ Cfg.openAddCfg = function () {
 };
 
 /**
- * 打开查看系统参数详情
+ * 打开系统参数详情页
  */
 Cfg.openCfgDetail = function (id) {
         var index = layer.open({
@@ -70,12 +70,12 @@ Cfg.delete = function (id) {
         }, function (data) {
             Feng.error("删除失败!" + data.responseJSON.message + "!");
         });
+        ajax.setType('delete');
         ajax.set("cfgId", id);
         ajax.start();
+
     };
-
     Feng.confirm("确认删除该记录?", operation);
-
 };
 
 /**

@@ -1,63 +1,63 @@
 # update
 
 参数修改逻辑为：
-- 列表页选中修改参数，点击修改按钮，弹出修改页面
+- 点击参数名，打开编辑页面
 - 更改信息，提交修改
 - 关闭修改弹窗，并刷新列表页面
 
-
-## 列表页选中修改参数，点击修改按钮，弹出修改页面
+## 列表页点击要修改的参数名，弹出修改页面
 
 
 ```html
-<#button name="修改" icon="fa-edit" clickFun="Cfg.openCfgDetail()" space="true"/>
+  {title: '参数名', field: 'cfgName', visible: true, align: 'center', valign: 'middle',formatter:function(data,row){
+            return '<a href="javascript:;" onclick="Cfg.openCfgDetail('+row.id+')">'+data+'</a>';
+        }},
 ```
 
 - 打开参数详情弹窗
 
 ```javascript
 /**
- * 打开查看系统参数详情
+ * 打开系统参数详情页
  */
-Cfg.openCfgDetail = function () {
-    if (this.check()) {
+Cfg.openCfgDetail = function (id) {
         var index = layer.open({
             type: 2,
             title: '系统参数详情',
-            area: ['800px', '420px'], //宽高
+            area: ['65%', '280px'], //宽高
             fix: false, //不固定
             maxmin: true,
-            content: Feng.ctxPath + '/cfg/cfg_update/' + Cfg.seItem.id
+            content: Feng.ctxPath + '/cfg/cfg_update/' + id
         });
         this.layerIndex = index;
-    }
+
 };
 ```
 - 后台查询参数调准到详情逻辑
 
 ```java
-    /**
-     * 跳转到修改参数
-     */
-    @RequestMapping("/cfg_update/{cfgId}")
-    public String orgUpdate(@PathVariable Long cfgId, Model model) {
-        Cfg cfg = cfgRepository.findOne(cfgId);
-        model.addAttribute("item",cfg);
-        return PREFIX + "cfg_edit.html";
-    }
+/**
+ * 跳转到修改参数
+ */
+@RequestMapping(value = "/cfg_update/{cfgId}",method = RequestMethod.POST)
+public String update(@PathVariable Long cfgId, Model model) {
+    Cfg cfg = cfgService.get(cfgId);
+    model.addAttribute("item",cfg);
+    return PREFIX + "cfg_edit.html";
+}
 ```
 
 - 参数修改页面
-
+_cfg_edit.html_:
 ```html
-@layout("/common/_container.html"){
-<div class="ibox float-e-margins">
-    <div class="ibox-content">
+@layout("/common/include.html"){
+<div class="card">
+    <div class="card-body card-padding">
         <div class="form-horizontal">
             <input type="hidden" id="id" value="${item.id}">
             <div class="row">
                 <div class="col-sm-6 b-r">
-                            <#input id="id" name="自增主键" value="${item.id}" underline="true"  readonly="readonly"/>
+                            <#input id="id" name="自增主键" value="${item.id}" disabled="disabled"/>
                             <#input id="cfgName" name="参数名" value="${item.cfgName}" />
                 </div>
                 <div class="col-sm-6">
@@ -74,7 +74,7 @@ Cfg.openCfgDetail = function () {
         </div>
     </div>
 </div>
-<script src="${ctxPath}/static/modular/cfg/cfg/cfg_info.js"></script>
+<script src="${ctxPath}/static/modular/system/cfg/cfg_info.js"></script>
 @}
 
 ```
@@ -109,13 +109,14 @@ CfgInfoDlg.editSubmit = function() {
 - 后台逻辑提交更改
 
 ```java
-    /**
-     * 修改参数
-     */
-    @RequestMapping(value = "/update")
-    @ResponseBody
-    public Object update(Cfg cfg) {
-        cfgRepository.save(cfg);
-        return SUCCESS_TIP;
-    }
+/**
+ * 修改参数
+ */
+@RequestMapping(value = "/update",method = RequestMethod.POST)
+@ResponseBody
+@BussinessLog(value = "编辑参数", key = "cfgName",dict = CfgDict.class)
+public Object update(@Valid  Cfg cfg) {
+   cfgService.update(cfg);
+    return SUCCESS_TIP;
+}
 ```

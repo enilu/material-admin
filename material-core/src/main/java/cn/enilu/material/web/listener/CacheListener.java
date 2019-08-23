@@ -9,11 +9,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 /**
- *系统监听器<br>
- *系统启动时加载全局参数(t_sys_cfg标中的数据)到缓存中
- * @version 2018-12-23
+ * 系统监听器<br>
+ * 系统启动时加载全局参数(t_sys_cfg标中的数据)到缓存中
  *
- * @author  enilu
+ * @author enilu
+ * @version 2018-12-23
  */
 @Component
 public class CacheListener implements CommandLineRunner {
@@ -32,8 +32,6 @@ public class CacheListener implements CommandLineRunner {
 
     @Override
     public void run(String... strings) throws Exception {
-        logger.info(".....................cache listener........................");
-
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -41,6 +39,6 @@ public class CacheListener implements CommandLineRunner {
             }
         });
         thread.start();
-        logger.info("...................cache listener end......................");
+
     }
 }

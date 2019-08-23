@@ -6,7 +6,7 @@
 
 ```properties
 ## 开发环境配置，修改为真实的用户名密码
-spring.datasource.url=jdbc:mysql://localhost:3306/material-admin
+spring.datasource.url=jdbc:mysql://localhost:3306/material
 spring.datasource.username=root
 spring.datasource.password=root
 

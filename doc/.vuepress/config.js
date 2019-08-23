@@ -39,7 +39,7 @@ module.exports = {
             },
 
             {
-                title: '30分钟将本项目跑起来',
+                title: '10分钟将本项目跑起来',
                 collapsable: false,
                 children: [
                     '/quickstart/quickstart',
@@ -53,14 +53,14 @@ module.exports = {
                 title: '开发第一个功能',
                 collapsable: false,
                 children: [
-                    '/hello_guns/hello_guns',
-                    '/hello_guns/create_table',
-                    '/hello_guns/base',
-                    '/hello_guns/list',
-                    '/hello_guns/add',
-                    '/hello_guns/delete',
-                    '/hello_guns/update',
-                    '/hello_guns/menuAndPermission'
+                    '/helloworld/crud',
+                    '/helloworld/create_table',
+                    '/helloworld/base',
+                    '/helloworld/list',
+                    '/helloworld/add',
+                    '/helloworld/delete',
+                    '/helloworld/update',
+                    '/helloworld/menuAndPermission'
                 ]
             },
             {
@@ -80,7 +80,6 @@ module.exports = {
                 title: '进阶',
                 collapsable: false,
                 children: [
-                    '/action/i18n',
                     '/action/sqlite',
                     '/action/cache',
                     '/action/task',

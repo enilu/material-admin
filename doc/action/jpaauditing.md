@@ -64,12 +64,12 @@ public class AdminApplication extends WebMvcConfigurerAdapter {
 @Configuration
 public class UserIDAuditorConfig implements AuditorAware<Long> {
     @Override
-    public Long getCurrentAuditor() {
+    public Optional<Long> getCurrentAuditor() {
         ShiroUser shiroUser = ShiroKit.getUser();
         if(shiroUser!=null){
-            return shiroUser.getId();
+            return Optional.of(shiroUser.getId());
         }
-        return null;
+        return Optional.of(Constants.SYSTEM_USER_ID);
     }
 }
 ```

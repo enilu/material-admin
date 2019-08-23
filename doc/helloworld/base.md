@@ -3,66 +3,49 @@
 ## 实体Entity
 
 ```java
-@Entity
-@Table(name = "t_sys_cfg")
-public class Cfg {
-    private Long id;
+package cn.enilu.material.bean.entity.system;
+
+import cn.enilu.material.bean.entity.BaseEntity;
+import lombok.Data;
+import org.hibernate.annotations.Table;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.validation.constraints.NotBlank;
+
+@Entity(name="t_sys_cfg")
+@Table(appliesTo = "t_sys_cfg",comment = "系统参数")
+@Data
+@EntityListeners(AuditingEntityListener.class)
+public class Cfg  extends BaseEntity {
+    @Column(name = "cfg_name",columnDefinition = "VARCHAR(256) COMMENT '参数名'")
+    @NotBlank(message = "参数名不能为空")
     private String cfgName;
+    @Column(name = "cfg_value",columnDefinition = "VARCHAR(512) COMMENT '参数值'")
+    @NotBlank(message = "参数值不能为空")
     private String cfgValue;
+    @Column(name = "cfg_desc",columnDefinition = "TEXT COMMENT '备注'")
     private String cfgDesc;
 
-    @Id
-    @GeneratedValue
-    @Column(name = "id")
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    @Basic
-    @Column(name = "cfg_name")
-    public String getCfgName() {
-        return cfgName;
-    }
-
-    public void setCfgName(String cfgName) {
-        this.cfgName = cfgName;
-    }
-
-    @Basic
-    @Column(name = "cfg_value")
-    public String getCfgValue() {
-        return cfgValue;
-    }
-
-    public void setCfgValue(String cfgValue) {
-        this.cfgValue = cfgValue;
-    }
-
-    @Basic
-    @Column(name = "cfg_desc")
-    public String getCfgDesc() {
-        return cfgDesc;
-    }
-
-    public void setCfgDesc(String cfgDesc) {
-        this.cfgDesc = cfgDesc;
-    }
- 
 }
 ```
 
 ## 数据库操作Repository
 
 ```java
-public interface CfgRepository extends JpaRepository<Cfg, Long> {
-
+public interface CfgRepository extends BaseRepository<Cfg,Long> {
+    
 }
-```
 
+```
+## service
+```java
+@Service
+public class CfgService extends BaseService<Cfg,Long,CfgRepository> {
+
+}    
+```
 ## controller
 
 ```java
@@ -71,8 +54,8 @@ public interface CfgRepository extends JpaRepository<Cfg, Long> {
 @RequestMapping("/cfg")
 public class CfgController extends BaseController {
     @Autowired
-    private CfgRepository cfgRepository;
-    private static String PREFIX = "/back/cfg/";
+    private CfgService cfgService;
+    private static String PREFIX = "/system/cfg/";
     /**
      * 跳转到参数首页
      */
@@ -85,7 +68,7 @@ public class CfgController extends BaseController {
      * 跳转到添加参数
      */
     @RequestMapping("/cfg_add")
-    public String orgAdd() {
+    public String add() {
         return PREFIX + "cfg_add.html";
     }
 
@@ -93,8 +76,8 @@ public class CfgController extends BaseController {
      * 跳转到修改参数
      */
     @RequestMapping("/cfg_update/{cfgId}")
-    public String orgUpdate(@PathVariable Long cfgId, Model model) {
-        Cfg cfg = cfgRepository.findOne(cfgId);
+    public String update(@PathVariable Long cfgId, Model model) {
+        Cfg cfg = cfgService.get(cfgId);
         model.addAttribute("item",cfg);
         return PREFIX + "cfg_edit.html";
     }
@@ -104,8 +87,16 @@ public class CfgController extends BaseController {
      */
     @RequestMapping(value = "/list")
     @ResponseBody
-    public Object list() {
-        return cfgRepository.findAll();
+    public Object list(@RequestParam(required = false) String cfgName, @RequestParam(required = false) String cfgValue) {
+        Page<Cfg> page = new PageFactory<Cfg>().defaultPage();
+        if(StringUtils.isNotEmpty(cfgName)){
+            page.addFilter(SearchFilter.build("cfgName", SearchFilter.Operator.LIKE, cfgName));
+        }
+        if(StringUtils.isNotEmpty(cfgValue)){
+            page.addFilter(SearchFilter.build("cfgValue", SearchFilter.Operator.LIKE, cfgValue));
+        }
+        page = cfgService.queryPage(page);
+        return packForBT(page);
     }
 
     /**
@@ -113,8 +104,9 @@ public class CfgController extends BaseController {
      */
     @RequestMapping(value = "/add")
     @ResponseBody
-    public Object add(Cfg cfg) {
-        cfgRepository.save(cfg);
+    @BussinessLog(value = "添加参数", key = "cfgName",dict = CfgDict.class)
+    public Object add(@Valid Cfg cfg) {
+       cfgService.saveOrUpdate(cfg);
         return SUCCESS_TIP;
     }
 
@@ -123,8 +115,9 @@ public class CfgController extends BaseController {
      */
     @RequestMapping(value = "/delete")
     @ResponseBody
+    @BussinessLog(value = "删除参数", key = "cfgId",dict = CfgDict.class)
     public Object delete(@RequestParam Long cfgId) {
-        cfgRepository.delete(cfgId);
+        cfgService.delete(cfgId);
         return SUCCESS_TIP;
     }
 
@@ -133,8 +126,9 @@ public class CfgController extends BaseController {
      */
     @RequestMapping(value = "/update")
     @ResponseBody
-    public Object update(Cfg cfg) {
-        cfgRepository.save(cfg);
+    @BussinessLog(value = "编辑参数", key = "cfgName",dict = CfgDict.class)
+    public Object update(@Valid  Cfg cfg) {
+       cfgService.update(cfg);
         return SUCCESS_TIP;
     }
 
@@ -144,9 +138,8 @@ public class CfgController extends BaseController {
     @RequestMapping(value = "/detail/{cfgId}")
     @ResponseBody
     public Object detail(@PathVariable("cfgId") Long cfgId) {
-        return cfgRepository.findOne(cfgId);
+        return cfgService.get(cfgId);
     }
 
-}
 ```
  

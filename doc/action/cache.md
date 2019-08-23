@@ -61,5 +61,5 @@ public interface Cache {
 **当数据库中数据变化的时候缓存中的数据如何做到更新**
 - material-admin中的做法简单明了，目前针对全局参数Cfg和字典Dict表的进行更新操作的时候分别调用ConfigCache和DictCache的cache()重新将数据库中的数据加载到缓存中.
 - 具体代码参考CfgService和DictService
-- 具体生产中，也许会有很多产品都是微服务架构，这时候推荐使用zookeeper来做配置变更的管理，感兴趣的同学可以在qq群众讨论，这里不再赘述。
+- 具体生产中，也许会有很多产品都是微服务架构，这时候推荐使用zookeeper来做配置变更的管理，感兴趣的同学可以在qq群中讨论，这里不再赘述。
  

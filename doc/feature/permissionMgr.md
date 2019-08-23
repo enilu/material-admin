@@ -12,7 +12,7 @@
 ![menu](./img/menu.jpg)
 - 角色管理： 为角色配置可以访问的菜单和按钮
 
-![menu](../hello_guns/role.jpg)
+![menu](../helloworld/role.jpg)
 
 - 用户管理： 为用户配置角色
 

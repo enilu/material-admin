@@ -14,6 +14,7 @@ import org.springframework.data.jpa.domain.Specification;
 import java.io.Serializable;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 /**
  *
@@ -47,7 +48,11 @@ public abstract  class BaseService<T, ID extends Serializable, R extends BaseRep
 
     @Override
     public T get(ID id) {
-        return  dao.findById(id).get();
+        Optional optional =  dao.findById(id);
+        if(optional==null){
+            return null;
+        }
+        return (T) optional.get();
     }
 
     @Override

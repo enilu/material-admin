@@ -2,7 +2,7 @@
 
 本项目地址为：[https://github.com/enilu/material-admin](https://github.com/enilu/material-admin),如果对你有用，欢迎给个star
 
-项目共三个分支分别为：
+项目共两个分，支分别为：
 - master 项目主分支
 - develop 开发分支，代码最新，但是不稳定 
 
