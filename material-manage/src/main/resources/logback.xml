@@ -16,7 +16,6 @@
 	<!-- 向文件输出日志 -->
 	<appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<!--<fileNamePattern>/Users/deanyule/runtime/log/edu-finance-api%d{yyyy-MM-dd}.log</fileNamePattern>-->
 			<fileNamePattern>log/admin_%d{yyyy-MM-dd}.log</fileNamePattern>
 			<maxHistory>1000</maxHistory>
 		</rollingPolicy>
@@ -33,7 +32,7 @@
 	<logger name="cn.enilu.material" level="DEBUG" />
 
 	<!-- root级别的logger -->
-	<root level="INFO">
+	<root level="DEBUG">
 		<appender-ref ref="file" />
 		<appender-ref ref="stdout" />
 	</root>
