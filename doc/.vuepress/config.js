@@ -72,6 +72,7 @@ module.exports = {
                     '/feature/dict',
                     '/feature/log',
                     '/feature/monitor'
+                    ]
             },{
                 title: '进阶',
                 collapsable: false,
