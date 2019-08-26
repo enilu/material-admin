@@ -67,7 +67,7 @@ public class ShiroFactroy implements IShiro {
         shiroUser.setName(user.getName());        // 用户名称
 
 
-        Long[] roleArray = Convert.toLongArray(false,user.getRoleid());// 角色集合
+        Long[] roleArray = Convert.toLongArray(",", user.getRoleid());
         List<Long> roleList = new ArrayList<Long>();
         List<String> roleNameList = new ArrayList<String>();
         for (Long roleId : roleArray) {
