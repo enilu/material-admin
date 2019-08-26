@@ -74,7 +74,7 @@ public class CfgController extends BaseController {
     /**
      * 跳转到修改参数
      */
-    @RequestMapping(value = "/cfg_update/{cfgId}",method = RequestMethod.POST)
+    @RequestMapping(value = "/cfg_update/{cfgId}",method = RequestMethod.GET)
     public String update(@PathVariable Long cfgId, Model model) {
         Cfg cfg = cfgService.get(cfgId);
         model.addAttribute("item",cfg);
@@ -88,7 +88,7 @@ public class CfgController extends BaseController {
     @ResponseBody
     @BussinessLog(value = "编辑参数", key = "cfgName",dict = CfgDict.class)
     public Object update(@Valid  Cfg cfg) {
-        cfgService.update(cfg);
+        cfgService.saveOrUpdate(cfg);
         return SUCCESS_TIP;
     }
 
