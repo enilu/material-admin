@@ -13,7 +13,11 @@ import java.util.List;
  * @date 2017-06-14 21:12
  */
 public interface IConstantFactory {
-
+    /**
+     * 获取静态资源版本号
+     * @return
+     */
+    String resourceVersion();
     /**
      * 根据用户id获取用户名称
      *

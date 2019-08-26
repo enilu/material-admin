@@ -4,6 +4,7 @@ import cn.enilu.material.bean.constant.cache.CacheKey;
 import cn.enilu.material.bean.constant.state.ManagerStatus;
 import cn.enilu.material.bean.constant.state.MenuStatus;
 import cn.enilu.material.bean.entity.system.*;
+import cn.enilu.material.bean.enumeration.ConfigKeyEnum;
 import cn.enilu.material.bean.vo.DictVo;
 import cn.enilu.material.bean.vo.SpringContextHolder;
 import cn.enilu.material.dao.cache.ConfigCache;
@@ -55,6 +56,10 @@ public class ConstantFactory implements IConstantFactory {
     public void set(String key, String val) {
         cache.put(key, val);
 
+    }
+    @Override
+    public String resourceVersion(){
+        return (String) configCache.get(ConfigKeyEnum.SYSTEM_RESOURCE_VERSION.getValue());
     }
 
     /**
