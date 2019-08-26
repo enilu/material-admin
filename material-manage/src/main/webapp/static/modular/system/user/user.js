@@ -119,7 +119,6 @@ MgrUser.roleAssign = function (id) {
  */
 MgrUser.delMgrUser = function (id) {
     var operation = function(){
-        var userId = MgrUser.seItem.id;
         var ajax = new $ax(Feng.ctxPath + "/mgr/delete", function () {
             Feng.success("删除成功!");
             MgrUser.table.refresh();

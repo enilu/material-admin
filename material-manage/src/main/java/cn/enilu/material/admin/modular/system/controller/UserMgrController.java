@@ -254,7 +254,7 @@ public class UserMgrController extends BaseController {
             throw new ApplicationException(BizExceptionEnum.REQUEST_NULL);
         }
         //不能删除超级管理员
-        if (userId.equals(Const.ADMIN_ID)) {
+        if (userId.intValue() == Const.ADMIN_ID) {
             throw new ApplicationException(BizExceptionEnum.CANT_DELETE_ADMIN);
         }
         assertAuth(userId);
@@ -288,6 +288,9 @@ public class UserMgrController extends BaseController {
         if (ToolUtil.isEmpty(userId)) {
             throw new ApplicationException(BizExceptionEnum.REQUEST_NULL);
         }
+        if (userId.intValue()== Const.ADMIN_ID) {
+            throw new ApplicationException(BizExceptionEnum.CANT_CHANGE_ADMIN);
+        }
         assertAuth(userId);
         User user = userService.get(userId);
         user.setSalt(ToolUtil.getRandomString(5));
@@ -308,7 +311,7 @@ public class UserMgrController extends BaseController {
             throw new ApplicationException(BizExceptionEnum.REQUEST_NULL);
         }
         //不能冻结超级管理员
-        if (userId.equals(Const.ADMIN_ID)) {
+        if (userId.intValue()== Const.ADMIN_ID) {
             throw new ApplicationException(BizExceptionEnum.CANT_FREEZE_ADMIN);
         }
         assertAuth(userId);
@@ -348,7 +351,7 @@ public class UserMgrController extends BaseController {
             throw new ApplicationException(BizExceptionEnum.REQUEST_NULL);
         }
         //不能修改超级管理员
-        if (userId.equals(Const.ADMIN_ID)) {
+        if (userId.intValue() == Const.ADMIN_ID) {
             throw new ApplicationException(BizExceptionEnum.CANT_CHANGE_ADMIN);
         }
         assertAuth(userId);
