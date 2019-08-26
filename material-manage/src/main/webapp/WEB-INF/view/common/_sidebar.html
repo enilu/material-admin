@@ -32,13 +32,27 @@
     <ul class="main-menu">
         @for(title in shiro.getUser().titles){
             @if(tool.isEmpty(title.children)){
+                @if(request.requestURI == subTitle.url){
+                <li><a class="active" href="${ctxPath}${title.url}"><i class="fa ${title.icon}"></i> ${title.name}</a></li>
+                @}else{
                 <li><a href="${ctxPath}${title.url}"><i class="fa ${title.icon}"></i> ${title.name}</a></li>
+                @}
             @}else{
-                <li class="sub-menu">
+                <li
+                    @if(shiro.isParent(request.requestURI,title.name)){
+                        class="sub-menu active toggled"
+                    @}else{
+                        class="sub-menu"
+                    @}
+                >
                     <a href=""><i class="fa ${title.icon}"></i> ${title.name}</a>
                     <ul>
                       @for(subTitle in title.children){
+                        @if(request.requestURI == subTitle.url){
+                        <li><a class="active" href="${ctxPath}${subTitle.url}">${subTitle.name}</a></li>
+                        @}else{
                         <li><a href="${ctxPath}${subTitle.url}">${subTitle.name}</a></li>
+                        @}
                       @}
                     </ul>
                 </li>

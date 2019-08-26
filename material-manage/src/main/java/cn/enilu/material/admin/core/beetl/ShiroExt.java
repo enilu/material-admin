@@ -15,11 +15,15 @@
  */
 package cn.enilu.material.admin.core.beetl;
 
+import cn.enilu.material.bean.vo.node.MenuNode;
+import cn.enilu.material.utils.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.beetl.core.GroupTemplate;
 
 import cn.enilu.material.bean.core.ShiroUser;
+
+import java.util.List;
 
 public class ShiroExt {
     private static final String NAMES_DELIMETER = ",";
@@ -44,6 +48,33 @@ public class ShiroExt {
         } else {
             return (ShiroUser) getSubject().getPrincipals().getPrimaryPrincipal();
         }
+    }
+
+    /**
+     * 判断指定url和菜单名称是否是父子关系
+     * @param sonUrl 子菜单url
+     * @param parentName 父菜单名称
+     * @return
+     */
+    public boolean isParent(String sonUrl,String parentName){
+        if (isGuest()) {
+            return false;
+        } else {
+            ShiroUser shiroUser = (ShiroUser) getSubject().getPrincipals().getPrimaryPrincipal();
+            List<MenuNode> list =  shiroUser.getTitles();
+            for(MenuNode parent:list){
+                List<MenuNode> children = parent.getChildren();
+                if(children==null || children.isEmpty()){
+                    continue;
+                }
+                for(MenuNode child:children){
+                    if(sonUrl.equals(child.getUrl()) && parentName.equals(parent.getName())){
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 
     /**
