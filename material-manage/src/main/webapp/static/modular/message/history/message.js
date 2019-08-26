@@ -13,30 +13,18 @@ var Message = {
  */
 Message.initColumn = function () {
     return [
+
+             {field: 'selectItem', radio: true},
             {title: 'ID', field: 'id', visible: true, align: 'center', valign: 'middle'},
             {title: '消息模板', field: 'tplCode', visible: true, align: 'center', valign: 'middle'},
             {title: '消息内容', field: 'content', visible: true, align: 'center', valign: 'middle',formatter:function(data,row){
+                console.log(row);
                 return '<a href="#" onclick="Message.openDetail('+row.id+')">'+data+'</a>'
             }},
             {title: '接收者', field: 'receiver', visible: true, align: 'center', valign: 'middle'},
             {title: '发送时间', field: 'createTime', visible: true, align: 'center', valign: 'middle'}
     ];
 };
-
-/**
- * 检查是否选中
- */
-Message.check = function () {
-    var selected = $('#' + this.id).bootstrapTable('getSelections');
-    if(selected.length == 0){
-        Feng.info("请先选中表格中的某一记录！");
-        return false;
-    }else{
-        Message.seItem = selected[0];
-        return true;
-    }
-};
-
 /**
  * 打开查看系统参数详情
  */
@@ -44,7 +32,7 @@ Message.openDetail = function (id) {
         var index = layer.open({
             type: 2,
             title: '消息详情',
-            area: ['800px', '420px'], //宽高
+            area: ['800px', '300px'], //宽高
             fix: false, //不固定
             maxmin: true,
             content: Feng.ctxPath + '/message/history/view/' + id
