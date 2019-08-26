@@ -3,4 +3,6 @@
 *.iml
 log
 *.log
+doc/.vuepress/dist
+doc/node_modules
 备忘.md

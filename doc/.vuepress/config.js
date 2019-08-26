@@ -17,14 +17,15 @@ module.exports = {
         nav: [
             {text: '文档', link: '/'},
             {text: '公告', link: 'https://www.oschina.net/p/material-admin'},
-            {text: '捐赠',link:'/donate'},
+            // {text: '捐赠',link:'/donate'},
             {text: '资源',link:'/resource'},
             {text: '周边',
                 items:[
                     {text: '代码生成',link:'/ecosystem/code-generator'},
                     {text: '数据库文档生成',link:'/ecosystem/database-doc-generator'},
                 ]
-            }
+            },
+            {text: '码云',link:'https://gitee.com/enilu/material-admin'},
 
 
         ],
@@ -72,6 +73,7 @@ module.exports = {
                     '/feature/dict',
                     '/feature/log',
                     '/feature/monitor'
+                    ]
             },{
                 title: '进阶',
                 collapsable: false,

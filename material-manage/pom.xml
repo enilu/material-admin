@@ -7,6 +7,7 @@
         <groupId>cn.enilu</groupId>
         <version>0.1</version>
     </parent>
+    <packaging>war</packaging>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>materail-manage</artifactId>
@@ -68,32 +69,32 @@
                 </configuration>
             </plugin>
             <!--以war包形式部署到tomcat中-->
-            <!--<plugin>-->
-            <!--<artifactId>maven-war-plugin</artifactId>-->
-            <!--<version>2.6</version>-->
-            <!--<configuration>-->
-            <!--<warName>material</warName>-->
-            <!--<failOnMissingWebXml>false</failOnMissingWebXml>-->
-            <!--</configuration>-->
-            <!--</plugin>-->
+            <plugin>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>2.6</version>
+            <configuration>
+            <warName>material</warName>
+            <failOnMissingWebXml>false</failOnMissingWebXml>
+            </configuration>
+            </plugin>
 
             <!--以jar包形式单独部署开始-->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>cn.enilu.material.admin.AdminApplication</mainClass>
-                    <layout>ZIP</layout>
-                    <finalName>material</finalName>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.springframework.boot</groupId>-->
+                <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+                <!--<configuration>-->
+                    <!--<mainClass>cn.enilu.material.admin.AdminApplication</mainClass>-->
+                    <!--<layout>ZIP</layout>-->
+                    <!--<finalName>material</finalName>-->
+                <!--</configuration>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<goals>-->
+                            <!--<goal>repackage</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
 
         </plugins>
         <resources>
