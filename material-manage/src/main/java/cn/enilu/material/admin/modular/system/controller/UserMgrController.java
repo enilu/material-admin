@@ -3,17 +3,16 @@ package cn.enilu.material.admin.modular.system.controller;
 import cn.enilu.material.admin.config.properties.AppProperties;
 import cn.enilu.material.admin.core.base.controller.BaseController;
 import cn.enilu.material.admin.core.base.tips.Tip;
-import cn.enilu.material.bean.core.BussinessLog;
-import cn.enilu.material.bean.core.Permission;
 import cn.enilu.material.bean.constant.Const;
 import cn.enilu.material.bean.constant.state.ManagerStatus;
+import cn.enilu.material.bean.core.BussinessLog;
+import cn.enilu.material.bean.core.Permission;
 import cn.enilu.material.bean.core.ShiroUser;
 import cn.enilu.material.bean.dictmap.UserDict;
 import cn.enilu.material.bean.dto.UserDto;
 import cn.enilu.material.bean.entity.system.User;
 import cn.enilu.material.bean.enumeration.BizExceptionEnum;
 import cn.enilu.material.bean.exception.ApplicationException;
-import cn.enilu.material.bean.exception.ExceptionEnum;
 import cn.enilu.material.factory.UserFactory;
 import cn.enilu.material.service.system.LogObjectHolder;
 import cn.enilu.material.service.system.UserService;
@@ -149,7 +148,7 @@ public class UserMgrController extends BaseController {
         if (user.getPassword().equals(oldMd5)) {
             String newMd5 = MD5.md5(newPwd, user.getSalt());
             user.setPassword(newMd5);
-          userService.saveOrUpdate(user);
+            userService.saveOrUpdate(user);
             return SUCCESS_TIP;
         } else {
             throw new ApplicationException(BizExceptionEnum.OLD_PWD_NOT_RIGHT);
@@ -163,28 +162,20 @@ public class UserMgrController extends BaseController {
     @Permission
     @ResponseBody
     public Object list(@RequestParam(required = false) String name, @RequestParam(required = false) String beginTime, @RequestParam(required = false) String endTime, @RequestParam(required = false) Integer deptid) {
-        Map<String,Object> params = new HashMap<>();
-        params.put("name",name);
-        params.put("beginTime",beginTime);
-        params.put("endTime",endTime);
-        if (ShiroKit.isAdmin()) {
-            User user = new User();
-            if(!Strings.isNullOrEmpty(name)){
-                user.setName(name);
-                user.setAccount(name);
-            }
-            if(deptid!=null&&deptid!=0){
-               params.put("deptid",deptid);
-            }
-
-            List<User> users = userService.findAll(params);
-            return new UserWarpper(BeanUtil.objectsToMaps(users)).warp();
-        } else {
-            params.put("deptid",deptid);
-            List<User> users = userService.findAll(params);
-
-            return new UserWarpper(BeanUtil.objectsToMaps(users)).warp();
+        Map<String, Object> params = new HashMap<>();
+        params.put("name", name);
+        params.put("beginTime", beginTime);
+        params.put("endTime", endTime);
+        if (deptid != null && deptid != 0) {
+            params.put("deptid", deptid);
         }
+        if (!Strings.isNullOrEmpty(name)) {
+            params.put("name","%"+ name+"%");
+        }
+        List<User> users = userService.findAll(params);
+
+        return new UserWarpper(BeanUtil.objectsToMaps(users)).warp();
+
     }
 
     /**
@@ -210,7 +201,7 @@ public class UserMgrController extends BaseController {
         user.setPassword(MD5.md5(user.getPassword(), user.getSalt()));
         user.setStatus(ManagerStatus.OK.getCode());
 
-        this.userService.insert(UserFactory.createUser(user,new User()));
+        this.userService.insert(UserFactory.createUser(user, new User()));
         return SUCCESS_TIP;
     }
 
@@ -229,13 +220,13 @@ public class UserMgrController extends BaseController {
         }
         User oldUser = userService.get(user.getId());
         if (ShiroKit.hasRole(Const.ADMIN_NAME)) {
-            userService.update(UserFactory.updateUser(user,oldUser));
+            userService.update(UserFactory.updateUser(user, oldUser));
             return SUCCESS_TIP;
         } else {
             assertAuth(user.getId());
             ShiroUser shiroUser = ShiroKit.getUser();
             if (shiroUser.getId().equals(user.getId())) {
-                userService.update(UserFactory.updateUser(user,oldUser));
+                userService.update(UserFactory.updateUser(user, oldUser));
                 return SUCCESS_TIP;
             } else {
                 throw new ApplicationException(BizExceptionEnum.NO_PERMITION);
@@ -289,7 +280,7 @@ public class UserMgrController extends BaseController {
         if (ToolUtil.isEmpty(userId)) {
             throw new ApplicationException(BizExceptionEnum.REQUEST_NULL);
         }
-        if (userId.intValue()== Const.ADMIN_ID) {
+        if (userId.intValue() == Const.ADMIN_ID) {
             throw new ApplicationException(BizExceptionEnum.CANT_CHANGE_ADMIN);
         }
         assertAuth(userId);
@@ -312,7 +303,7 @@ public class UserMgrController extends BaseController {
             throw new ApplicationException(BizExceptionEnum.REQUEST_NULL);
         }
         //不能冻结超级管理员
-        if (userId.intValue()== Const.ADMIN_ID) {
+        if (userId.intValue() == Const.ADMIN_ID) {
             throw new ApplicationException(BizExceptionEnum.CANT_FREEZE_ADMIN);
         }
         assertAuth(userId);

@@ -7,7 +7,12 @@ package cn.enilu.material.bean.constant;
  * @date 2017年2月12日 下午9:42:53
  */
 public interface Const {
+    long SYSTEM_USER_ID=-1;
 
+    /**
+     * 用户密码加密key
+     */
+    String CRYPT_DES_KEY = "sc123456";
     /**
      * 系统默认的管理员密码
      */

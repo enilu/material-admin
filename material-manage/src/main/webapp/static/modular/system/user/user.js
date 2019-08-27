@@ -30,7 +30,7 @@ MgrUser.initColumn = function () {
         {title: '部门', field: 'deptName', align: 'center', valign: 'middle', sortable: true},
         {title: '邮箱', field: 'email', align: 'center', valign: 'middle', sortable: true},
         {title: '电话', field: 'phone', align: 'center', valign: 'middle', sortable: true},
-        {title: '创建时间', field: 'createtime', align: 'center', valign: 'middle', sortable: true},
+        {title: '创建时间', field: 'createTime', align: 'center', valign: 'middle', sortable: true},
         {title: '状态',field:'status',visible:true,align:'center',valign:'middle',formatter:function(data,row){
 
             if(data == 3){
@@ -74,7 +74,7 @@ MgrUser.openAddMgr = function () {
     var index = layer.open({
         type: 2,
         title: '添加管理员',
-        area: ['800px', '440px'], //宽高
+        area: ['70%', '500px'], //宽高
         fix: false, //不固定
         maxmin: true,
         content: Feng.ctxPath + '/mgr/user_add'

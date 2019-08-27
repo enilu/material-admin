@@ -260,9 +260,9 @@ INSERT INTO `t_sys_task` (`id`, `name`, `job_group`, `job_class`, `note`, `cron`
 -- Records of t_sys_user
 -- ----------------------------
 
-INSERT INTO `t_sys_user` VALUES ('-1', null, null, null, null, 'system', null, null, null, null, '应用系统', 'avatar.png', null, null, null, null, null, null);
-INSERT INTO `t_sys_user` VALUES ('1', null, '2016-01-29 08:49:53', '1', '2019-03-20 23:45:24', 'admin', 'avatar.png', '2017-05-05 00:00:00', '3', 'eniluzt@qq.com', '管理员', '6ab1f386d715cfb6be85de941d438b02', null, '1', '8pgby', '2', '1', '25');
-INSERT INTO `t_sys_user` VALUES ('2', null, '2018-09-13 17:21:02', '1', '2019-01-09 23:05:51', 'developer', 'avatar.png', '2017-12-31 00:00:00', '4', 'eniluzt@qq.com', '网站管理员', '4552805b07a4bf92ce1cea0373aab868', '', '2', 'vscp9', '1', '1', null);
+INSERT INTO `t_sys_user` VALUES ('-1', null, null, null, null, 'system', null, null, null, null, '应用系统', null, null, null, null, null, null, null);
+INSERT INTO `t_sys_user` VALUES ('1', null, '2016-01-29 08:49:53', '1', '2019-03-20 23:45:24', 'admin', 'avatar.png', '2017-05-05 00:00:00', '3', 'eniluzt@qq.com', '管理员', '6ab1f386d715cfb6be85de941d438b02', '15011111111', '1', '8pgby', '2', '1', '25');
+INSERT INTO `t_sys_user` VALUES ('2', null, '2018-09-13 17:21:02', '1', '2019-01-09 23:05:51', 'developer', 'avatar.png', '2017-12-31 00:00:00', '4', 'eniluzt@qq.com', '网站管理员', '4552805b07a4bf92ce1cea0373aab868', '15222222222', '2', 'vscp9', '1', '1', null);
 
 -- ----------------------------
 -- Records of t_test_boy

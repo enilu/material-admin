@@ -122,8 +122,9 @@ public class ShiroKit {
      */
     public static void removeSessionAttr(String key) {
         Session session = getSession();
-        if (session != null)
+        if (session != null) {
             session.removeAttribute(key);
+        }
     }
 
     /**

@@ -6,15 +6,15 @@
 <div class="card">
     <div class="card-body card-padding">
         <div class="row row-lg">
-            <div class="col-sm-12">
+            <div class="col-md-12">
                 <div class="hidden-xs" id="LoginLogTableToolbar" role="group">
-                    <div class="col-sm-2">
+                    <div class="col-md-2">
                         <#TimeCon id="beginTime" placeholder="开始时间"/>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-md-2">
                         <#TimeCon id="endTime" placeholder="结束时间"/>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-md-2">
                         <#NameCon id="logName" placeholder="日志名称" />
                     </div>
                         <#button name="搜索" icon="fa-search" clickFun="LoginLog.search()"/>
@@ -24,6 +24,7 @@
                 </div>
                 <#table id="LoginLogTable"/>
             </div>
+
         </div>
     </div>
 </div>

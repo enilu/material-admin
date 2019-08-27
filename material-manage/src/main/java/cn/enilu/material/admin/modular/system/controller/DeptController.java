@@ -1,6 +1,7 @@
 package cn.enilu.material.admin.modular.system.controller;
 
 import cn.enilu.material.admin.core.base.controller.BaseController;
+import cn.enilu.material.bean.constant.Const;
 import cn.enilu.material.bean.core.BussinessLog;
 import cn.enilu.material.bean.core.Permission;
 import cn.enilu.material.bean.dictmap.DeptDict;
@@ -122,7 +123,7 @@ public class DeptController extends BaseController {
      */
     @BussinessLog(value = "修改部门", key = "simplename", dict = DeptDict.class)
     @RequestMapping(value = "/update")
-    @Permission
+    @Permission(Const.ADMIN_NAME)
     @ResponseBody
     public Object update(Dept dept) {
         if (ToolUtil.isEmpty(dept) || dept.getId() == null) {
@@ -138,7 +139,7 @@ public class DeptController extends BaseController {
      */
     @BussinessLog(value = "删除部门", key = "deptId", dict = DeptDict.class)
     @RequestMapping(value = "/delete")
-    @Permission
+    @Permission(Const.ADMIN_NAME)
     @ResponseBody
     public Object delete(@RequestParam Long deptId) {
         //缓存被删除的部门名称

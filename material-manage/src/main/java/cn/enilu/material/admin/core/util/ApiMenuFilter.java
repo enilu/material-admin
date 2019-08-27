@@ -1,7 +1,7 @@
 package cn.enilu.material.admin.core.util;
 
-import cn.enilu.material.bean.constant.Const;
 import cn.enilu.material.admin.config.properties.AppProperties;
+import cn.enilu.material.bean.constant.Const;
 import cn.enilu.material.bean.vo.SpringContextHolder;
 import cn.enilu.material.bean.vo.node.MenuNode;
 

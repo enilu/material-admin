@@ -74,6 +74,7 @@ public class LoginController extends BaseController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String loginVali() {
         String username = super.getPara("username").trim();
+        //todo 演示环境只允许developer账号登录，实际开发中应去掉下面的逻辑
         if(!"developer".equals(username)){
             throw  new ApplicationException(ExceptionEnum.ONLY_DEMO_ACCOUNT);
         }

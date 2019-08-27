@@ -1,6 +1,8 @@
 package cn.enilu.material.utils;
 
 
+import cn.enilu.material.bean.constant.Const;
+
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
@@ -150,14 +152,14 @@ public class CryptUtils {
 	 * 对字符串按密钥进行DES加密
 	 */
 	public static String encode(String data) {
-		return encrypt(data, Constants.CRYPT_DES_KEY);
+		return encrypt(data, Const.CRYPT_DES_KEY);
 	}
 
 	/**
 	 * 对字符串按密钥进行DES解密
 	 */
 	public static String decode(String data) {
-		return decrypt(data, Constants.CRYPT_DES_KEY);
+		return decrypt(data, Const.CRYPT_DES_KEY);
 	}
 
 	/**

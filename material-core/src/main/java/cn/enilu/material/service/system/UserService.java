@@ -1,10 +1,10 @@
 package cn.enilu.material.service.system;
 
+import cn.enilu.material.bean.constant.Const;
 import cn.enilu.material.bean.entity.system.User;
 import cn.enilu.material.dao.system.UserRepository;
 import cn.enilu.material.service.BaseService;
 import cn.enilu.material.utils.DateUtil;
-import cn.enilu.material.utils.StringUtils;
 import com.google.common.base.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
@@ -38,12 +38,12 @@ public class UserService extends BaseService<User,Long,UserRepository> {
                     list.add(criteriaBuilder.equal(root.get("deptid").as(String.class), params.get("deptid").toString()));
                 }
                 if(params.get("name") !=null && !Strings.isNullOrEmpty(params.get("name").toString())){
-                    list.add(criteriaBuilder.equal(root.get("name").as(String.class), params.get("name").toString()));
+                    Predicate p1 = criteriaBuilder.like(root.get("name").as(String.class), params.get("name").toString());
+                    Predicate p2 = criteriaBuilder.like(root.get("account").as(String.class),params.get("name").toString());
+                    list.add(criteriaBuilder.or(p1,p2));
                 }
-                if(StringUtils.isNotNullOrEmpty(params.get("account"))){
-                    list.add(criteriaBuilder.like(root.get("account").as(String.class),params.get("account").toString()));
-                }
-                list.add(criteriaBuilder.notEqual(root.get("id").as(Long.class),-1L));
+
+                list.add(criteriaBuilder.notEqual(root.get("id").as(Long.class), Const.SYSTEM_USER_ID));
                 if(params.get("beginTime") != null && !Strings.isNullOrEmpty(params.get("beginTime").toString())){
                     list.add(criteriaBuilder.greaterThan(root.get("createTime").as(Date.class), DateUtil.parseDate(params.get("beginTime").toString())));
                 }
