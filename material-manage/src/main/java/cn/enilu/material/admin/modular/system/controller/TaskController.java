@@ -1,8 +1,10 @@
 package cn.enilu.material.admin.modular.system.controller;
 
 import cn.enilu.material.admin.core.base.controller.BaseController;
+import cn.enilu.material.bean.constant.Const;
 import cn.enilu.material.bean.core.BussinessLog;
 import cn.enilu.material.bean.constant.factory.PageFactory;
+import cn.enilu.material.bean.core.Permission;
 import cn.enilu.material.bean.dictmap.TaskDict;
 import cn.enilu.material.bean.entity.system.Task;
 import cn.enilu.material.bean.entity.system.TaskLog;
@@ -79,6 +81,7 @@ public class TaskController extends BaseController {
     @RequestMapping(value = "/add")
     @ResponseBody
     @BussinessLog(value = "添加定时任务", key = "name",dict = TaskDict.class)
+    @Permission(Const.ADMIN_NAME)
     public Object add(@Valid Task task) {
         taskService.save(task);
         return SUCCESS_TIP;
@@ -90,6 +93,7 @@ public class TaskController extends BaseController {
     @RequestMapping(value = "/delete")
     @ResponseBody
     @BussinessLog(value = "删除定时任务", key = "taskId",dict = TaskDict.class)
+    @Permission(Const.ADMIN_NAME)
     public Object delete(@RequestParam Long taskId) {
         taskService.delete(taskId);
         return SUCCESS_TIP;
@@ -98,6 +102,7 @@ public class TaskController extends BaseController {
     @RequestMapping("/disable")
     @ResponseBody
     @BussinessLog(value = "禁用定时任务", key = "taskId",dict = TaskDict.class)
+    @Permission(Const.ADMIN_NAME)
     public Object disable(@RequestParam Long taskId  ) {
         taskService.disable(taskId);
         return SUCCESS_TIP;
@@ -105,6 +110,7 @@ public class TaskController extends BaseController {
     @RequestMapping("/enable")
     @ResponseBody
     @BussinessLog(value = "启用定时任务", key = "taskId",dict = TaskDict.class)
+    @Permission(Const.ADMIN_NAME)
     public Object enable(@RequestParam Long taskId  ) {
         taskService.enable(taskId);
         return SUCCESS_TIP;

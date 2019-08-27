@@ -222,6 +222,7 @@ public class UserMgrController extends BaseController {
     @RequestMapping("/edit")
     @BussinessLog(value = "修改管理员", key = "account", dict = UserDict.class)
     @ResponseBody
+    @Permission(Const.ADMIN_NAME)
     public Tip edit(@Valid UserDto user, BindingResult result) throws NoPermissionException {
         if (result.hasErrors()) {
             throw new ApplicationException(BizExceptionEnum.REQUEST_NULL);
@@ -247,7 +248,7 @@ public class UserMgrController extends BaseController {
      */
     @RequestMapping("/delete")
     @BussinessLog(value = "删除管理员", key = "userId", dict = UserDict.class)
-    @Permission
+    @Permission(Const.ADMIN_NAME)
     @ResponseBody
     public Tip delete(@RequestParam Long userId) {
         if (ToolUtil.isEmpty(userId)) {

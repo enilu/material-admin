@@ -112,7 +112,7 @@ public class MenuController extends BaseController {
     /**
      * 获取菜单列表
      */
-    @Permission(Const.ADMIN_NAME)
+    @Permission
     @RequestMapping(value = "/list")
     @ResponseBody
     public Object list(@RequestParam(required = false) String menuName, @RequestParam(required = false) String level) {

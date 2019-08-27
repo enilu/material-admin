@@ -1,42 +1,72 @@
 <!DOCTYPE html>
-<html>
-
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
 <head>
-
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Material Admin</title>
 
+    <!-- Vendor CSS -->
+    <link href="${ctxPath}/static/vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
+    <link href="${ctxPath}/static/vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
 
-    <title>后台管理 - 404 页面</title>
-    <link rel="shortcut icon" href="${ctxPath}/static/favicon.ico"> <link href="${ctxPath}/static/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-    <link href="${ctxPath}/static/css/font-awesome.css?v=4.4.0" rel="stylesheet">
-    <link href="${ctxPath}/static/css/animate.css" rel="stylesheet">
-    <link href="${ctxPath}/static/css/style.css?v=4.1.0" rel="stylesheet">
-
+    <!-- CSS -->
+    <link href="${ctxPath}/static/css/app.min.1.css" rel="stylesheet">
+    <link href="${ctxPath}/static/css/app.min.2.css" rel="stylesheet">
 </head>
 
-<body class="gray-bg">
+<body class="four-zero-content">
+<div class="four-zero">
+    <h2>SEX!</h2>
+    <small>Nah.. it's 404</small>
 
+    <footer>
+        <a href="javascript:history.back();"><i class="zmdi zmdi-arrow-back"></i></a>
+        <a href="${ctxPath}/"><i class="zmdi zmdi-home"></i></a>
+    </footer>
+</div>
 
-    <div class="middle-box text-center animated fadeInDown">
-        <h1>404</h1>
-        <h3 class="font-bold">页面未找到！</h3>
-
-        <div class="error-desc">
-            抱歉，页面好像去火星了~
-            <!--<form class="form-inline m-t" role="form">-->
-                <!--<div class="form-group">-->
-                    <!--<input type="text" class="form-control" placeholder="请输入您需要查找的内容 …">-->
-                <!--</div>-->
-                <!--<button type="submit" class="btn btn-primary">搜索</button>-->
-            <!--</form>-->
-        </div>
+<!-- Older IE warning message -->
+<!--[if lt IE 9]>
+<div class="ie-warning">
+    <h1 class="c-white">Warning!!</h1>
+    <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
+    <div class="iew-container">
+        <ul class="iew-download">
+            <li>
+                <a href="http://www.google.com/chrome/">
+                    <img src="img/browsers/chrome.png" alt="">
+                    <div>Chrome</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.mozilla.org/en-US/firefox/new/">
+                    <img src="img/browsers/firefox.png" alt="">
+                    <div>Firefox</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.opera.com">
+                    <img src="img/browsers/opera.png" alt="">
+                    <div>Opera</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.apple.com/safari/">
+                    <img src="img/browsers/safari.png" alt="">
+                    <div>Safari</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                    <img src="img/browsers/ie.png" alt="">
+                    <div>IE (New)</div>
+                </a>
+            </li>
+        </ul>
     </div>
-
-    <!-- 全局js -->
-    <script src="${ctxPath}/static/js/jquery.min.js?v=2.1.4"></script>
-    <script src="${ctxPath}/static/js/bootstrap.min.js?v=3.3.6"></script>
-
+    <p>Sorry for the inconvenience!</p>
+</div>
+<![endif]-->
 </body>
-
 </html>

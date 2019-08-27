@@ -67,7 +67,6 @@ Menu.openChangeMenu = function (id) {
  * 删除
  */
 Menu.delMenu = function (id) {
-
         var operation = function () {
             var ajax = new $ax(Feng.ctxPath + "/menu/remove", function (data) {
                 Feng.success("删除成功!");

@@ -1,8 +1,10 @@
 package cn.enilu.material.admin.modular.system.controller;
 
 import cn.enilu.material.admin.core.base.controller.BaseController;
+import cn.enilu.material.bean.constant.Const;
 import cn.enilu.material.bean.core.BussinessLog;
 import cn.enilu.material.bean.constant.factory.PageFactory;
+import cn.enilu.material.bean.core.Permission;
 import cn.enilu.material.bean.dictmap.CfgDict;
 import cn.enilu.material.bean.entity.system.Cfg;
 import cn.enilu.material.bean.vo.query.Page;
@@ -87,6 +89,7 @@ public class CfgController extends BaseController {
     @RequestMapping(value = "/update",method = RequestMethod.POST)
     @ResponseBody
     @BussinessLog(value = "编辑参数", key = "cfgName",dict = CfgDict.class)
+    @Permission(Const.ADMIN_NAME)
     public Object update(@Valid  Cfg cfg) {
         cfgService.saveOrUpdate(cfg);
         return SUCCESS_TIP;
@@ -98,6 +101,7 @@ public class CfgController extends BaseController {
     @RequestMapping(value = "/delete",method = RequestMethod.DELETE)
     @ResponseBody
     @BussinessLog(value = "删除参数", key = "cfgId",dict = CfgDict.class)
+    @Permission(Const.ADMIN_NAME)
     public Object delete(@RequestParam Long cfgId) {
         cfgService.delete(cfgId);
         return SUCCESS_TIP;
