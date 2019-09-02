@@ -22,6 +22,7 @@ public enum BizExceptionEnum implements ServiceExceptionEnum {
 	 */
 	FILE_READING_ERROR(400,"FILE_READING_ERROR!"),
 	FILE_NOT_FOUND(400,"FILE_NOT_FOUND!"),
+	NOT_ALLOW(400, "不允许该操作"),
 	UPLOAD_ERROR(500,"上传图片出错"),
 
 	/**

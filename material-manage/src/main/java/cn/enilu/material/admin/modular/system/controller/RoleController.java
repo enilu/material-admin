@@ -1,5 +1,6 @@
 package cn.enilu.material.admin.modular.system.controller;
 
+import cn.enilu.material.admin.core.base.tips.ErrorTip;
 import cn.enilu.material.bean.core.BussinessLog;
 import cn.enilu.material.bean.core.Permission;
 import cn.enilu.material.bean.constant.Const;
@@ -9,6 +10,7 @@ import cn.enilu.material.admin.core.base.controller.BaseController;
 import cn.enilu.material.admin.core.base.tips.Tip;
 import cn.enilu.material.admin.core.cache.CacheKit;
 import cn.enilu.material.bean.exception.ApplicationException;
+import cn.enilu.material.bean.vo.query.SearchFilter;
 import cn.enilu.material.service.system.UserService;
 import cn.enilu.material.utils.BeanUtil;
 import cn.enilu.material.warpper.RoleWarpper;
@@ -162,10 +164,13 @@ public class RoleController extends BaseController {
         }
 
         //不能删除超级管理员角色
-        if(roleId.equals(Const.ADMIN_ROLE_ID)){
+        if(roleId.intValue() ==Const.ADMIN_ROLE_ID){
             throw new ApplicationException(BizExceptionEnum.CANT_DELETE_ADMIN);
         }
-
+        List<User> userList = userService.queryAll(SearchFilter.build("roleid", SearchFilter.Operator.EQ,String.valueOf(roleId)));
+        if(!userList.isEmpty()){
+            return new ErrorTip(400,"有用户使用该角色，禁止删除");
+        }
         //缓存被删除的角色名称
         LogObjectHolder.me().set(ConstantFactory.me().getSingleRoleName(roleId));
 

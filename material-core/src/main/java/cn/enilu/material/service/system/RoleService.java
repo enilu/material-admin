@@ -3,12 +3,18 @@ package cn.enilu.material.service.system;
 
 import cn.enilu.material.bean.entity.system.Relation;
 import cn.enilu.material.bean.entity.system.Role;
+import cn.enilu.material.bean.entity.system.User;
+import cn.enilu.material.bean.enumeration.BizExceptionEnum;
+import cn.enilu.material.bean.exception.ApplicationException;
+import cn.enilu.material.bean.exception.ExceptionEnum;
 import cn.enilu.material.bean.vo.node.Node;
 import cn.enilu.material.bean.vo.node.ZTreeNode;
 import cn.enilu.material.dao.system.RelationRepository;
 import cn.enilu.material.dao.system.RoleRepository;
+import cn.enilu.material.dao.system.UserRepository;
 import cn.enilu.material.service.BaseService;
 import cn.enilu.material.utils.Convert;
+import com.fasterxml.jackson.annotation.JacksonAnnotationsInside;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +33,8 @@ public class RoleService extends BaseService<Role,Long,RoleRepository> {
     private RoleRepository roleRepository;
     @Autowired
     private RelationRepository relationRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     public List<ZTreeNode> roleTreeList() {
         List list = roleRepository.roleTreeList();
@@ -74,7 +82,11 @@ public class RoleService extends BaseService<Role,Long,RoleRepository> {
         }
     }
 
-    public void delRoleById(Long roleId) {
+    public void delRoleById(Long roleId) { List<User> list = userRepository.findByRoleid(String.valueOf(roleId));
+        if(!list.isEmpty()){
+            throw  new ApplicationException(BizExceptionEnum.NOT_ALLOW);
+        }
+
         //删除角色
         roleRepository.deleteById(roleId);
 
