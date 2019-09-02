@@ -29,7 +29,11 @@
 					
 				},
 		        success: function(data) {
-		        	me.success(data);
+		        	if(data.code && data.code != 200){
+						Feng.error(data.message);
+					}else {
+						me.success(data);
+					}
 		        },
 		        error: function(data) {
 		        	//如果后台通过spring validator返回错误信息，则取第一条错误信息并显示
