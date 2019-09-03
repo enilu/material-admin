@@ -12,6 +12,7 @@
         <module>material-core</module>
         <module>material-manage</module>
         <module>material-generator</module>
+        <module>material-lab</module>
     </modules>
 
     <properties>
@@ -44,7 +45,7 @@
         <velocity.version>1.7</velocity.version>
         <quartz.version>2.2.1</quartz.version>
         <ehcache.version>3.3.1</ehcache.version>
-        <ehcache.core.version>2.6.11</ehcache.core.version>
+        <ehcache.core.version>2.10.5</ehcache.core.version>
         <zxing.version>3.2.1</zxing.version>
         <beetl.version>2.7.15</beetl.version>
         <swagger.version>2.2.2</swagger.version>
@@ -165,7 +166,7 @@
                 <version>${ehcache.version}</version>
             </dependency>
             <dependency>
-                <groupId>net.sf.ehcache</groupId>
+                <groupId>net.sf.ehcache.internal</groupId>
                 <artifactId>ehcache-core</artifactId>
                 <version>${ehcache.core.version}</version>
             </dependency>

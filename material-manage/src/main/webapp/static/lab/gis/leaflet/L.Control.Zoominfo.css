@@ -1,0 +1,124 @@
+/** Slider **/
+.leaflet-control-zoominfo-wrap {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+}
+.leaflet-control-zoominfo-body {
+  width: 2px;
+  border: solid #fff;
+  border-width: 0px 9px 0px 9px;
+  background-color: black;
+  margin: 0 auto;
+}
+
+.leaflet-control-zoominfo-body:hover {
+  cursor: pointer;
+}
+
+.leaflet-dragging .leaflet-control-zoominfo,
+.leaflet-dragging .leaflet-control-zoominfo-wrap,
+.leaflet-dragging .leaflet-control-zoominfo-body,
+.leaflet-dragging .leaflet-control-zoominfo a,
+.leaflet-dragging .leaflet-control-zoominfo a.leaflet-control-zoominfo-disabled {
+  cursor: move;
+  cursor: -webkit-grabbing;
+  cursor:    -moz-grabbing;
+}
+
+/** Leaflet Zoom Styles **/
+.leaflet-container .leaflet-control-zoominfo {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+.leaflet-control-zoominfo a {
+  width: 26px;
+  height: 26px;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  display: block;
+}
+.leaflet-control-zoominfo a:hover {
+  background-color: #f4f4f4;
+}
+.leaflet-control-zoominfo-in {
+  font: bold 18px 'Lucida Console', Monaco, monospace;
+}
+.leaflet-control-zoominfo-in:after{
+  content:"+"
+}
+.leaflet-control-zoominfo-out {
+  font: bold 22px 'Lucida Console', Monaco, monospace;
+}
+.leaflet-control-zoominfo-out:after{
+  content:"−"
+}
+.leaflet-control-zoominfo a.leaflet-control-zoominfo-disabled {
+  cursor: default;
+  color: #bbb;
+}
+
+/* Touch */
+.leaflet-touch .leaflet-control-zoominfo-body {
+  background-position: 10px 0px;
+}
+.leaflet-touch .leaflet-control-zoominfo a {
+  width: 30px;
+  line-height: 30px;
+}
+.leaflet-touch .leaflet-control-zoominfo a:hover {
+  width: 30px;
+  line-height: 30px;
+}
+.leaflet-touch .leaflet-control-zoominfo-in {
+  font-size: 24px;
+  line-height: 29px;
+}
+.leaflet-touch .leaflet-control-zoominfo-out {
+  font-size: 28px;
+  line-height: 30px;
+}
+.leaflet-touch .leaflet-control-zoominfo {
+  box-shadow: none;
+  border: 4px solid rgba(0,0,0,0.3);
+}
+
+.leaflet-control-zoominfo-info { 
+  margin-left: -13px;
+  background-color: #fff;
+  border: none;
+  width: 22px;
+  height: 22px;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  padding: 4px 4px 0px 3px;
+
+  border-radius: 4px; 
+  cursor: default;
+}
+
+.leaflet-control-zoominfoinfo h4 { 
+  margin: 0 0 0px 0px; 
+  color: #000; 
+}
+
+/* Old IE */
+
+.leaflet-oldie .leaflet-control-zoominfo-wrap {
+  width: 26px;
+}
+
+.leaflet-oldie .leaflet-control-zoominfo {
+  border: 1px solid #999;
+}
+
+.leaflet-oldie .leaflet-control-zoominfo-in {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '+');
+}
+.leaflet-oldie .leaflet-control-zoominfo-out {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '-');
+}

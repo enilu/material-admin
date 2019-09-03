@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>arc.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css" />
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.ie.css" />
+    <![endif]-->
+
+    <script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
+    <script src="./arc.js"></script>
+    <style>
+
+      body {
+        margin:10px auto;
+        width:90%;
+        font:14px/20px 'Helvetica';
+      }
+
+      #map {
+        border: 1px solid;
+        width:  100%;
+        height: 420px;
+        margin: 10px auto;
+      }
+
+      #json-dump {
+        width: 100%;
+        height: 100px;
+      }
+
+    </style>
+</head>
+<body>
+
+
+
+    <div id="map"></div>
+
+    <div id="geojson">
+    <textarea id="json-dump"></textarea>
+    </div>
+
+    <script>
+        var map = new L.Map('map');
+        var idx = 1;
+        var features = [];
+        
+        //var url = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+        var attribution = 'Map data &copy; 2011 OpenStreetMap contributors';
+        
+        var url = 'http://{s}.tiles.mapbox.com/v3/springmeyer.map-7jkxlsx1/{z}/{x}/{y}.png'
+        var osm = new L.TileLayer(url, {maxZoom: 17, attribution: attribution, noWrap:true});
+        
+        map.setView(new L.LatLng(0, 0), 1).addLayer(osm);
+        
+        // number of intermediate arc points
+        var npoints = 50;
+        var coords = [];
+        var points = [];
+        var snap_tolerance = 500000;
+        
+        map.on('click', onMapClick);
+
+        var start;
+        var end;
+        function draw(coords) {
+            var len = coords.length;
+            if (len == 1) {
+                var hit = false;
+                start = coords[0];
+                for (var i=0;i<points.length;++i) {
+                    var distance = points[i].distanceTo(start);
+                    if (distance<snap_tolerance) {
+                        //console.log('hit previous point, re-using location')
+                        start = points[i];
+                        hit = true;
+                    } else {
+                        //console.log(distance);
+                    }
+                }
+                if (!hit) {
+                    points.push(start);
+                }
+                var circleOptions = {color: '#f03', opacity: 0.5, clickable:false};
+                var circle = new L.CircleMarker(start, circleOptions);
+                map.addLayer(circle);
+
+            } else if (len == 2) {
+                var hit = false;
+                end = coords[1];
+                for (var i=0;i<points.length;++i) {
+                    var distance = points[i].distanceTo(end);
+                    if (distance<snap_tolerance && (points[i].lng !== start.lng)) {
+                        //console.log('hit previous point, re-using location')
+                        end = points[i];
+                        hit = true;
+                    } else {
+                        //console.log(distance);
+                    }
+                }
+                if (!hit) {
+                    points.push(end);
+                }
+                var circleOptions = {color: '#f03', opacity: 0.5, clickable:false};
+                var circle = new L.CircleMarker(end, circleOptions);
+                map.addLayer(circle);
+
+                try {
+                    var from = new arc.Coord(start.lng,start.lat);
+                    var to = new arc.Coord(end.lng,end.lat);
+                    var properties = {
+                        arc:idx++,
+                        start:''+from.lon+','+from.lat,
+                        end:''+to.lon+','+to.lat
+                    };
+                    var greatCircle = new arc.GreatCircle(from,to,properties);
+                } catch (e) {
+                    // catch possible antipodes error
+                    alert(e.message);
+                    coords.length = 0;
+                    return;
+                }
+                
+                var gc = greatCircle.Arc(npoints);
+                var line = new L.geoJson().addTo(map);
+                var geojson_feature = gc.json();
+                features.push(geojson_feature)
+                // TODO  - figure out how to disable interactivity on json lines
+                line.addData(geojson_feature);
+                line.bindPopup("great circle from " + coords[0] + " to " + coords[1]);
+                setTimeout(function() {
+                    map.addLayer(line);
+                    coords.length = 0;
+                    document.getElementById("json-dump").value = JSON.stringify(
+                                                                { "type": "FeatureCollection",
+                                                                  "features": features
+                                                                });
+
+                },0)
+            }
+        }
+
+        function onMapClick(e) {
+          var coord = new L.LatLng(e.latlng.lat, e.latlng.lng);
+          coords.push(coord.wrap());
+          draw(coords);
+        }
+    </script>
+</body>
+</html>

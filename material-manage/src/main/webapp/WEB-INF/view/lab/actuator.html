@@ -1,0 +1,31 @@
+@layout("/common/layout.html"){
+<div class="block-header">
+    <h2>实验室</h2>
+</div>
+<div class="card">
+    <div class="card-body card-padding">
+        <div class="row row-lg">
+            <div class="col-sm-12">
+                <strong>这里会列出本系统集成的一些实验性质的功能，都放在material-lab模块里，通过启用配置文件application-lab.properties来启用这些功能</strong><br><br><br>
+                <div class="pm-body clearfix">
+                    <ul class="tab-nav tn-justified">
+                        <li class="active waves-effect"><a href="${ctxPath}/lab/actuator">actuator监控</a></li>
+                        <li class="waves-effect"><a href="${ctxPath}/lab/gis">gis地图</a></li>
+                    </ul>
+
+
+                    <div class="pmb-block">
+<pre>
+- 使用actuator可以方便的对spring boot应用做监控
+- 启用该功能后 访问http://localhost:8000/actuator/env
+</pre>
+                        测试访问:<a href="http://localhost:8000/actuator/env">http://localhost:8000/actuator/env</a><br>
+                        更多监控接口查看<a href="http://localhost:8000/actuator">http://localhost:8000/actuator</a><br>
+                        acturator提供的监控能力有限，而且没有界面，如果需要更成熟的工具，可以参考试试：Spring Boot Admin
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@}

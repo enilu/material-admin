@@ -1,0 +1,85 @@
+@layout("/common/layout.html"){
+
+<style>
+    body {
+        padding: 0;
+        margin: 0;
+    }
+
+      #map {
+        height: 800px;
+    }
+
+    #toolbar {
+    }
+
+
+</style>
+</head>
+
+<div class="block-header">
+    <h2>实验室</h2>
+</div>
+<div class="card">
+    <div class="card-body card-padding">
+        <div class="row row-lg">
+            <div class="col-sm-12">
+
+                <strong>这里会列出本系统集成的一些实验性质的功能，都放在material-lab模块里，通过启用配置文件application-lab.properties来启用这些功能</strong><br><br><br>
+                <div class="pm-body clearfix">
+                    <ul class="tab-nav tn-justified">
+                        <li class="waves-effect"><a href="${ctxPath}/lab/actuator">actuator监控</a></li>
+                        <li class="active waves-effect"><a href="${ctxPath}/lab/gis">gis地图</a></li>
+                    </ul>
+
+
+                    <div class="pmb-block">
+                        <div id="toolbar">
+                            <button id="btnInit">地图初始化</button>
+                            <button id="btnAddMark">addMark</button>
+                            <button id="btnAddMarks">addMarks</button>
+                            <button id="btnPointTo">定位上海</button>
+                            <button id="btnDrawCircle">画圆圈</button>
+                            <button id="btnDrawArc">画弧线</button>
+                        </div>
+                        <div id="map"></div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="${ctxPath}/static/lab/gis/js/jslib/Leaflet/leaflet.css"/>
+<link rel="stylesheet" href="${ctxPath}/static/lab/gis/js/jslib/Leaflet.draw/leaflet.draw.css"/>
+
+
+<script src="${ctxPath}/static/lab/gis/js/jslib/Leaflet/leaflet.js"></script>
+<script src="${ctxPath}/static/lab/gis/js/jslib/Leaflet.draw/leaflet.draw.js"></script>
+<script src="${ctxPath}/static/lab/gis/js/jslib/Leaflet/leaflet.functionaltilelayer.js"></script>
+<script src="${ctxPath}/static/lab/gis/js/jslib/Leaflet.draw/leaflet.draw-src.js"></script>
+<script src="${ctxPath}/static/lab/gis/js/jslib/Leaflet/leaflet.markercluster.js"></script>
+<script src="${ctxPath}/static/lab/gis/js/jslib/Leaflet/leaflet.polylineDecorator.min.js"></script>
+
+<script src="${ctxPath}/static/lab/gis/js/jslib/arc.js-gh-pages/arc.js"></script>
+<script src="${ctxPath}/static/lab/gis/js/jslib/bar.js"></script>
+<script src="${ctxPath}/static/lab/gis/js/jslib/arcDecorator.js"></script>
+<script src="${ctxPath}/static/lab/gis/js/jslib/mapColumnChart.js"></script>
+<script src="${ctxPath}/static/lab/gis/js/jslib/Leaflet.plugins/arc.js"></script>
+<script type="text/javascript" src="${ctxPath}/static/lab/gis/js/jslib/LMapLib.js"></script>
+<script src="${ctxPath}/static/lab/gis/js/jslib/Leaflet.PolylineDecorator-master/src/L.LineUtil.PolylineDecorator.js"></script>
+<script src="${ctxPath}/static/lab/gis/js/jslib/Leaflet.PolylineDecorator-master/src/L.RotatedMarker.js"></script>
+<script src="${ctxPath}/static/lab/gis/js/jslib/Leaflet.PolylineDecorator-master/src/L.Symbol.js"></script>
+<script src="${ctxPath}/static/lab/gis/js/jslib/Leaflet.PolylineDecorator-master/src/L.PolylineDecorator.js"></script>
+
+<script src="${ctxPath}/static/lab/gis/js/base/base_leaflet.draw.ext.js"></script>
+<script src="${ctxPath}/static/lab/gis/js/base/base_map.js"></script>
+<script src="${ctxPath}/static/lab/gis/js/base/base_tilesUtils.js"></script>
+
+<script type="text/javascript" src="${ctxPath}/static/lab/gis/js/test/data/cirlData.js"></script>
+<script type="text/javascript" src="${ctxPath}/static/lab/gis/index.js"></script>
+</body>
+</html>
+@}
