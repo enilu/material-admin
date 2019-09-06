@@ -32,7 +32,7 @@
     <ul class="main-menu">
         @for(title in shiro.getUser().titles){
             @if(tool.isEmpty(title.children)){
-                @if(request.requestURI == subTitle.url){
+                @if(request.requestURI == title.url){
                 <li><a class="active" href="${ctxPath}${title.url}"><i class="fa ${title.icon}"></i> ${title.name}</a></li>
                 @}else{
                 <li><a href="${ctxPath}${title.url}"><i class="fa ${title.icon}"></i> ${title.name}</a></li>
