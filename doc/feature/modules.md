@@ -20,7 +20,7 @@ material-admin包含3个核心模块：
 ## material-manage
 material-manage是一个标准的java web项目
 
-![material-manage](img/admin.jpg)
+![material-manage](./img/admin.jpg)
 
 目录结构包含：
 
@@ -33,7 +33,7 @@ material-manage是一个标准的java web项目
 
 目录结构如下所示：
 
-![material-manage](img/src.jpg)
+![material-manage](./img/src.jpg)
 
 - **common** 该package 封装了一些工具的类库，如一些注解，常量、枚举，异常等公共类
 - **config** 该package 包含项目支持各种特性的相关配置。例如：
@@ -56,17 +56,17 @@ system包中除了controller包是必须的，其他包都是根据具体情况�
  
 目录结构如下所示：
 
-![material-manage](img/web.jpg)
+![material-manage](./img/web.jpg)
 
 - static 目录为静态资源
     - css、fonts，img，js分别为公共的样式、字体，图片，js资源
     - modular 目录为业务用js资源，比如system即为admin内置功能的js资源，其中每个功能使用一个目录和WEB-INF/view/中的目录一一对应
     
-    ![material-web-js](img/web-js.jpg)
+    ![material-web-js](./img/web-js.jpg)
     
 - WEB-INF/view 为页面目录
     - common 为公共的页面框架和封装的标签目录
     - 其他目录为业务页面目录，比如system即为内置的功能页面包括用户、角色、权限等管理功能的页面
     
-    ![material-web-page](img/web-page.jpg)
+    ![material-web-page](./img/web-page.jpg)
 
