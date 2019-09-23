@@ -36,7 +36,7 @@
     @ResponseBody
     public Object add(Dept dept) {
         if (ToolUtil.isOneEmpty(dept, dept.getSimplename())) {
-            throw new GunsException(BizExceptionEnum.REQUEST_NULL);
+            throw new ApplicationException(BizExceptionEnum.REQUEST_NULL);
         }
         //完善pids,根据pid拿到pid的pids
         deptSetPids(dept);

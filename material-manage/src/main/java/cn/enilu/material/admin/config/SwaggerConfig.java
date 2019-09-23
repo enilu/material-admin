@@ -29,7 +29,7 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))                         //这里采用包含注解的方式来确定要显示的接口
-                .apis(RequestHandlerSelectors.basePackage("cn.enilu.material.admin.modular.system.controller"))    //这里采用包扫描的方式来确定要显示的接口
+                .apis(RequestHandlerSelectors.basePackage("cn.enilu.material.admin.modular"))    //这里采用包扫描的方式来确定要显示的接口
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -38,8 +38,8 @@ public class SwaggerConfig {
         return new ApiInfoBuilder()
                 .title("material-admin Doc")
                 .description("material-admin Api文档")
-                .termsOfServiceUrl("http://www.enilu.cn/guns-lite/")
-                .contact("enilu.cn")
+                .termsOfServiceUrl("https://enilu.gitee.io/material-admin")
+                .contact("www.enilu.cn")
                 .version("2.0")
                 .build();
     }
