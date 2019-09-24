@@ -1,13 +1,12 @@
 package cn.enilu.material.admin.modular.system.controller;
 
 import cn.enilu.material.admin.core.base.controller.BaseController;
-import cn.enilu.material.admin.core.base.tips.ErrorTip;
 import cn.enilu.material.admin.core.base.tips.Tip;
 import cn.enilu.material.admin.core.support.BeanKit;
-import cn.enilu.material.bean.core.BussinessLog;
-import cn.enilu.material.bean.core.Permission;
 import cn.enilu.material.bean.constant.Const;
 import cn.enilu.material.bean.constant.state.MenuStatus;
+import cn.enilu.material.bean.core.BussinessLog;
+import cn.enilu.material.bean.core.Permission;
 import cn.enilu.material.bean.dictmap.MenuDict;
 import cn.enilu.material.bean.entity.system.Menu;
 import cn.enilu.material.bean.enumeration.BizExceptionEnum;
@@ -99,13 +98,13 @@ public class MenuController extends BaseController {
     @BussinessLog(value = "修改菜单", key = "name", dict = MenuDict.class)
     @ResponseBody
     public Tip edit(@Valid Menu menu, BindingResult result) {
-        if(1==1){
+        if (1 == 1) {
             throw new ApplicationException(ExceptionEnum.TEST_NOT_ALLOWED);
         }
         //设置父级菜单编号
         menuService.menuSetPcode(menu);
         menu.setStatus(MenuStatus.ENABLE.getCode());
-        this.menuService.saveOrUpdate(menu);
+        this.menuService.update(menu);
         return SUCCESS_TIP;
     }
 
@@ -117,16 +116,16 @@ public class MenuController extends BaseController {
     @ResponseBody
     public Object list(@RequestParam(required = false) String menuName, @RequestParam(required = false) String level) {
         List<Menu> menus = null;
-        if(Strings.isNullOrEmpty(menuName)&&Strings.isNullOrEmpty(level)) {
+        if (Strings.isNullOrEmpty(menuName) && Strings.isNullOrEmpty(level)) {
             menus = (List<Menu>) this.menuService.queryAll();
         }
-        if(!Strings.isNullOrEmpty(menuName)&&!Strings.isNullOrEmpty(level)) {
-            menus = this.menuService.findByNameLikeAndLevels("%"+menuName+"%", Integer.valueOf(level));
+        if (!Strings.isNullOrEmpty(menuName) && !Strings.isNullOrEmpty(level)) {
+            menus = this.menuService.findByNameLikeAndLevels("%" + menuName + "%", Integer.valueOf(level));
         }
-        if(!Strings.isNullOrEmpty(menuName)&&Strings.isNullOrEmpty(level)) {
-            menus = this.menuService.findByNameLike("%"+menuName+"%");
+        if (!Strings.isNullOrEmpty(menuName) && Strings.isNullOrEmpty(level)) {
+            menus = this.menuService.findByNameLike("%" + menuName + "%");
         }
-        if(Strings.isNullOrEmpty(menuName)&&!Strings.isNullOrEmpty(level)) {
+        if (Strings.isNullOrEmpty(menuName) && !Strings.isNullOrEmpty(level)) {
             menus = this.menuService.findByLevels(Integer.valueOf(level));
         }
 
@@ -154,7 +153,7 @@ public class MenuController extends BaseController {
         //设置父级菜单编号
         menuService.menuSetPcode(menu);
         menu.setStatus(MenuStatus.ENABLE.getCode());
-        this.menuService.saveOrUpdate(menu);
+        this.menuService.insert(menu);
         return SUCCESS_TIP;
     }
 
@@ -166,7 +165,7 @@ public class MenuController extends BaseController {
     @BussinessLog(value = "删除菜单", key = "menuId", dict = MenuDict.class)
     @ResponseBody
     public Tip remove(@RequestParam Long menuId) {
-        if(1==1){
+        if (1 == 1) {
             throw new ApplicationException(ExceptionEnum.TEST_NOT_ALLOWED);
         }
         if (ToolUtil.isEmpty(menuId)) {

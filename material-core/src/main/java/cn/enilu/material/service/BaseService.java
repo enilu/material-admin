@@ -110,11 +110,6 @@ public abstract  class BaseService<T, ID extends Serializable, R extends BaseRep
     }
 
     @Override
-    public T saveOrUpdate(T record) {
-        return dao.save(record);
-    }
-
-    @Override
     public void clear() {
         dao.deleteAllInBatch();
     }

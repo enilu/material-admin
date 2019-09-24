@@ -102,7 +102,8 @@ public class NoticeController extends BaseController {
         if (ToolUtil.isOneEmpty(notice, notice.getTitle(), notice.getContent())) {
             throw new ApplicationException(BizExceptionEnum.REQUEST_NULL);
         }
-       noticeService.saveOrUpdate(notice);
+
+        noticeService.insert(notice);
         return SUCCESS_TIP;
     }
 

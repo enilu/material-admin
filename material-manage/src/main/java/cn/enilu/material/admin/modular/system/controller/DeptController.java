@@ -94,7 +94,7 @@ public class DeptController extends BaseController {
         }
         //完善pids,根据pid拿到pid的pids
         deptService.deptSetPids(dept);
-        return deptService.saveOrUpdate(dept);
+        return deptService.insert(dept);
     }
 
     /**
@@ -130,7 +130,7 @@ public class DeptController extends BaseController {
             throw new ApplicationException(BizExceptionEnum.REQUEST_NULL);
         }
         deptService.deptSetPids(dept);
-        deptService.saveOrUpdate(dept);
+        deptService.update(dept);
         return SUCCESS_TIP;
     }
 

@@ -73,8 +73,12 @@ public class MessagetemplateController extends BaseController {
     @RequestMapping(method = RequestMethod.POST)
     @BussinessLog(value = "编辑消息模板", key = "name", dict = CommonDict.class)
     @ResponseBody
-    public Object save(@ModelAttribute @Valid MessageTemplate tMessageTemplate) {
-        messagetemplateService.saveOrUpdate(tMessageTemplate);
+    public Object save(@ModelAttribute @Valid MessageTemplate messageTemplate) {
+        if(messageTemplate.getId()==null) {
+            messagetemplateService.insert(messageTemplate);
+        }else{
+            messagetemplateService.update(messageTemplate);
+        }
         return SUCCESS_TIP;
     }
 
