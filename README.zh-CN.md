@@ -1,6 +1,6 @@
 [English](./README.md) | 简体中文
 ## 简介
-[materail-admin](https://gitee.com/enilu/material-admin) 是一个通用的基础的后台管理系统，它基于[Spring Boot2](https://spring.io/projects/spring-boot/) 和 [Bootstrap](https://www.bootcss.com/)实现。它使用了当下流行的java 框架Spring Boot和基于Materail Design风格的组件构建。内置了权限管理，配置管理，组织机构，用户，定时任务，消息管理等后台常用的基础功能。提炼了典型的业务模型，可以帮助你快速搭建企业级中后台产品系统。
+[material-admin](https://gitee.com/enilu/material-admin) 是一个通用的基础的后台管理系统，它基于[Spring Boot2](https://spring.io/projects/spring-boot/) 和 [Bootstrap](https://www.bootcss.com/)实现。它使用了当下流行的java 框架Spring Boot和基于Material Design风格的组件构建。内置了权限管理，配置管理，组织机构，用户，定时任务，消息管理等后台常用的基础功能。提炼了典型的业务模型，可以帮助你快速搭建企业级中后台产品系统。
 
 - [在线预览](http://material.enilu.cn) 
 - [gitee地址](https://gitee.com/enilu/material-admin)
@@ -10,7 +10,7 @@
 
 你需要下载JAVA IDE :Eclipse或者Intellij IDEA
 
-你需要在开发环境中安装Lombook插件，用以生成java entity的set get方法。
+你需要在开发环境中安装Lombok插件，用以生成java entity的set get方法。
 
 你需要在本地安装JDK1.8 ,MySQL5.5+，Maven
 
