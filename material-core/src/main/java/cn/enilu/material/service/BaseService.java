@@ -103,7 +103,16 @@ public abstract  class BaseService<T, ID extends Serializable, R extends BaseRep
     public List<T> queryAll(SearchFilter filter, Sort sort) {
         return queryAll(Lists.newArrayList(filter),sort);
     }
+    @Override
+    public long count(SearchFilter filter) {
+        return count(Lists.newArrayList(filter));
+    }
 
+    @Override
+    public long count(List<SearchFilter> filters) {
+        Specification<T> specification = DynamicSpecifications.bySearchFilter(filters,dao.getDataClass());
+        return dao.count(specification);
+    }
     @Override
     public T update(T record) {
         return dao.save(record);
