@@ -11,3 +11,4 @@ doc/node_modules
 .DS_Store
 .settings
 .project
+launch.json

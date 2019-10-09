@@ -47,6 +47,6 @@ public class AdminApplication extends WebMvcConfigurerAdapter {
 
     public static void main(String[] args) {
         SpringApplication.run(AdminApplication.class, args);
-        logger.info("AdminApplication is success!");
+        logger.info("materail-admin is success!");
     }
 }
