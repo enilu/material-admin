@@ -1,11 +1,14 @@
 package cn.enilu.material.service;
 
+import cn.enilu.material.bean.constant.cache.Cache;
 import cn.enilu.material.bean.vo.query.DynamicSpecifications;
 import cn.enilu.material.bean.vo.query.Page;
 import cn.enilu.material.bean.vo.query.SearchFilter;
 import cn.enilu.material.dao.BaseRepository;
 import cn.enilu.material.utils.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -27,7 +30,10 @@ public abstract  class BaseService<T, ID extends Serializable, R extends BaseRep
     private R dao;
 
 
+
+
     @Override
+    @CacheEvict(value = Cache.APPLICATION ,key = "#root.targetClass.simpleName+':'+#id")
     public void delete(ID id) {
         dao.deleteById(id);
     }
@@ -47,12 +53,21 @@ public abstract  class BaseService<T, ID extends Serializable, R extends BaseRep
     }
 
     @Override
+    @Cacheable(value = Cache.APPLICATION ,key = "#root.targetClass.simpleName+':'+#id")
     public T get(ID id) {
-        Optional optional =  dao.findById(id);
-        if(optional==null){
-            return null;
-        }
-        return (T) optional.get();
+        return  dao.findById(id).get();
+    }
+
+    @Override
+    public T get(SearchFilter filter) {
+        List<T> list = queryAll(filter);
+        return list.isEmpty()?null:list.get(0);
+    }
+
+    @Override
+    public T get(List<SearchFilter> filters) {
+        List<T> list = queryAll(filters);
+        return list.isEmpty()?null:list.get(0);
     }
 
     @Override
@@ -101,7 +116,12 @@ public abstract  class BaseService<T, ID extends Serializable, R extends BaseRep
 
     @Override
     public List<T> queryAll(SearchFilter filter, Sort sort) {
-        return queryAll(Lists.newArrayList(filter),sort);
+        if(filter!=null){
+            return queryAll(Lists.newArrayList(filter),sort);
+        }else {
+            return queryAll(Lists.newArrayList(), sort);
+        }
+
     }
     @Override
     public long count(SearchFilter filter) {
@@ -114,6 +134,7 @@ public abstract  class BaseService<T, ID extends Serializable, R extends BaseRep
         return dao.count(specification);
     }
     @Override
+    @CacheEvict(value = Cache.APPLICATION ,key = "#root.targetClass.simpleName+':'+#record.id")
     public T update(T record) {
         return dao.save(record);
     }
