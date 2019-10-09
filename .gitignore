@@ -6,3 +6,8 @@ log
 doc/.vuepress/dist
 doc/node_modules
 备忘.md
+.classpath
+.factorypath
+.DS_Store
+.settings
+.project
