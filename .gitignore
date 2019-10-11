@@ -11,3 +11,7 @@ doc/node_modules
 .vscode
 .settings
 .project
+.DS_Store
+.settings
+.project
+launch.json

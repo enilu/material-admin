@@ -22,7 +22,7 @@ MgrUser.initColumn = function () {
         {title: '姓名', field: 'name', align: 'center', valign: 'middle', sortable: true},
         {title: '性别', field: 'sexName', align: 'center', valign: 'middle', sortable: true},
         {title: '角色', field: 'roleName', align: 'center', valign: 'middle', sortable: true,formatter:function(data,row){
-            if(data.length>5){
+            if(data && data.length>5){
                 return '<i class="zmdi zmdi-more zmdi-hc-fw" title="'+data+'"></i>';
             }
             return data;
