@@ -3,8 +3,6 @@ package cn.enilu.material.admin.modular.system.controller;
 import cn.enilu.material.admin.core.base.controller.BaseController;
 import cn.enilu.material.admin.core.util.KaptchaUtil;
 import cn.enilu.material.bean.core.ShiroUser;
-import cn.enilu.material.bean.exception.ApplicationException;
-import cn.enilu.material.bean.exception.ExceptionEnum;
 import cn.enilu.material.bean.exception.InvalidKaptchaException;
 import cn.enilu.material.platform.log.LogManager;
 import cn.enilu.material.platform.log.LogTaskFactory;
