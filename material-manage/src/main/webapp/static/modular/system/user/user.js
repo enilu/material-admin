@@ -40,13 +40,13 @@ MgrUser.initColumn = function () {
                 return '<div class="toggle-switch"> <input id="ts'+row.id+'" type="checkbox" hidden="hidden" checked="checked" onclick="MgrUser.freezeAccount('+row.id+')"> <label for="ts'+row.id+'" class="ts-helper"></label> </div>';
             }
             if(data == 2){
-                return   '<div class="toggle-switch"> <input id="ts'+row.id+'" type="checkbox" hidden="hidden" onclick="MgrUser.unfreeze('+row.id+')""> <label for="ts'+row.id+'" class="ts-helper"></label> </div>';
+                return   '<div class="toggle-switch"> <input id="ts'+row.id+'" type="checkbox" hidden="hidden" onclick="MgrUser.unfreeze('+row.id+')""> <label for="ts'+row.id+'" class="ts-helper" style="font-size:10px;"></label> </div>';
             }
         }},
         {title: '操作',formatter:function(data,row){
             return '<button type="button" class="btn bgm-lightblue btn-icon waves-effect waves-circle" onclick="MgrUser.resetPwd('+row.id+')" title="重置密码"><span class="zmdi zmdi-lock-open"></span></button>'
                 +  '<button type="button" class="btn bgm-lightgreen btn-icon waves-effect waves-circle" onclick="MgrUser.roleAssign('+row.id+')" title="分配角色"><span class="zmdi zmdi-assignment-account"></span></button>'
-            + '<button type="button" class="btn btn-info btn-icon waves-effect waves-circle" onclick="MgrUser.delMgrUser('+row.id+')" title="删除"><span class="zmdi zmdi-delete"></span></button>';
+            + '<button type="button" class="btn btn-danger btn-icon waves-effect waves-circle" onclick="MgrUser.delMgrUser('+row.id+')" title="删除"><span class="zmdi zmdi-delete"></span></button>';
 
         }}
     ];

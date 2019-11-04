@@ -38,7 +38,7 @@ Task.initColumn = function () {
             formatter:function(data,row){
                 var button = '';
                 button += '<button type="button" class="btn bgm-lightgreen btn-icon waves-effect waves-circle" onclick="Task.viewLog('+row.id+')" title="查看日志"><span class="zmdi zmdi-menu"></span></button>';
-                button += '<button type="button" class="btn btn-info btn-icon waves-effect waves-circle" onclick="Task.delete('+row.id+')" title="删除"><span class="zmdi zmdi-delete"></span></button>';
+                button += '<button type="button" class="btn btn-danger btn-icon waves-effect waves-circle" onclick="Task.delete('+row.id+')" title="删除"><span class="zmdi zmdi-delete"></span></button>';
                 return button
             }}
     ];

@@ -21,7 +21,7 @@ Cfg.initColumn = function () {
         {title: '参数值', field: 'cfgValue', visible: true, align: 'center', valign: 'middle'},
         {title: '参数描述', field: 'cfgDesc', visible: true, align: 'center', valign: 'middle'},
         {title: '操作',formatter:function(data,row){
-            return '<button type="button" class="btn btn-info btn-icon waves-effect waves-circle" onclick="Cfg.delete('+row.id+')" title="删除"><span class="zmdi zmdi-delete"></span></button>';
+            return '<button type="button" class="btn btn-danger btn-icon waves-effect waves-circle" onclick="Cfg.delete('+row.id+')" title="删除"><span class="zmdi zmdi-delete"></span></button>';
 
         }}
     ];

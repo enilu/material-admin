@@ -24,7 +24,7 @@ Role.initColumn = function () {
         {title: '操作',formatter:function(data,row){
             return '<button type="button" class="btn btn-icon   waves-effect waves-circle" onclick="Role.assign('+row.id+')" title="分配权限"><span class="zmdi zmdi-assignment-check"></span></button>'
                 +
-                '<button type="button" class="btn btn-info btn-icon waves-effect waves-circle" onclick="Role.delRole('+row.id+')" title="删除"><span class="zmdi zmdi-delete"></span></button>';
+                '<button type="button" class="btn btn-danger btn-icon waves-effect waves-circle" onclick="Role.delRole('+row.id+')" title="删除"><span class="zmdi zmdi-delete"></span></button>';
 
         }}
     ]

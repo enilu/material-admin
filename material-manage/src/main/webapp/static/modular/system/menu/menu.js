@@ -25,7 +25,7 @@ Menu.initColumn = function () {
         {title: '是否是菜单', field: 'isMenuName', align: 'center', valign: 'middle', sortable: true},
         {title: '状态', field: 'statusName', align: 'center', valign: 'middle', sortable: true},
         {title: '操作',formatter:function(data,row){
-            return   '<button type="button" class="btn btn-info btn-icon waves-effect waves-circle" onclick="Menu.delMenu('+row.id+')" title="删除"><span class="zmdi zmdi-delete"></span></button>';
+            return   '<button type="button" class="btn btn-danger btn-icon waves-effect waves-circle" onclick="Menu.delMenu('+row.id+')" title="删除"><span class="zmdi zmdi-delete"></span></button>';
 
         }}
         ]
