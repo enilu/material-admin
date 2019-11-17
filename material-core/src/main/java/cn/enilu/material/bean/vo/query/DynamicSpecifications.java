@@ -5,6 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.criteria.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -53,7 +54,11 @@ public class DynamicSpecifications {
                                 predicates.add(builder.lessThanOrEqualTo(expression, (Comparable) filter.value));
                                 break;
                             case IN:
-                                predicates.add(expression.in((ArrayList)filter.value));
+                                if(filter.value.getClass().isArray()){
+                                    predicates.add(expression.in((Object[]) filter.value));
+                                }else {
+                                    predicates.add(expression.in((ArrayList) filter.value));
+                                }
                                 break;
                             case ISNULL:
                                 predicates.add(expression.isNull());
