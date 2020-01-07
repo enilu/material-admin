@@ -67,8 +67,8 @@
 
 ## 交流
 - Bugs: [Issues](https://gitee.com/enilu/material-admin/issues/new)
-- QQ: 欢迎加入qq交流群 625246117
-- 微信: myenilu
+- QQ: 欢迎加入qq交流群 752844606
+- 微信群: 请添加myenilu好友后入群，添加备注：material-admin 
 - Gitter: [Gitter channel](https://gitter.im/springboot-material-admin/community)
 
 ## License

@@ -33,7 +33,7 @@ var flashMap = {
             center: [34.346299,106.757186],
             attributionControl: true
         });
-        L.tileLayer('http://duanzi:8080/gismap/{z}/{x}/{y}.png', {
+        L.tileLayer('http://gisdata.enilu.cn/{z}/{x}/{y}.png', {
             attribution: 'Map data &copy; GoogleMap,Support by <a href="http://www.enilu.cn">enilu.cn</a>'
         }).addTo(map);
         this.map = map;

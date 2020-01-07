@@ -57,7 +57,7 @@ user/password:admin/admin
 
 ## 交流
 - Bugs: [Issues](https://github.com/enilu/material-admin/issues/new)
-- QQ:625246117
+- QQ:752844606
 - wechat:myenilu
 - Gitter: [Gitter channel](https://gitter.im/springboot-material-admin/community)
 
