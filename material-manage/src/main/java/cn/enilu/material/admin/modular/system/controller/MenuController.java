@@ -98,9 +98,6 @@ public class MenuController extends BaseController {
     @BussinessLog(value = "修改菜单", key = "name", dict = MenuDict.class)
     @ResponseBody
     public Tip edit(@Valid Menu menu, BindingResult result) {
-        if (1 == 1) {
-            throw new ApplicationException(ExceptionEnum.TEST_NOT_ALLOWED);
-        }
         //设置父级菜单编号
         menuService.menuSetPcode(menu);
         menu.setStatus(MenuStatus.ENABLE.getCode());
@@ -165,9 +162,6 @@ public class MenuController extends BaseController {
     @BussinessLog(value = "删除菜单", key = "menuId", dict = MenuDict.class)
     @ResponseBody
     public Tip remove(@RequestParam Long menuId) {
-        if (1 == 1) {
-            throw new ApplicationException(ExceptionEnum.TEST_NOT_ALLOWED);
-        }
         if (ToolUtil.isEmpty(menuId)) {
             throw new ApplicationException(BizExceptionEnum.REQUEST_NULL);
         }
