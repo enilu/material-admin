@@ -10,7 +10,7 @@
     <packaging>war</packaging>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>materail-manage</artifactId>
+    <artifactId>material-manage</artifactId>
     <dependencies>
         <!-- 一些实验特性的功能 商业应用开发中可以有选择的删减-->
         <dependency>
