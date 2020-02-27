@@ -18,16 +18,16 @@ public class SearchFilter {
 
     public String fieldName;
     public Object value;
-    public Operator operator;
+    public Operator operator = Operator.EQ;
     public  static SearchFilter build(String fieldName, Operator operator, Object value){
         return  new SearchFilter(fieldName,operator,value);
     }
-    public  static SearchFilter build(String fieldName, Operator operator){
-        return  new SearchFilter(fieldName,operator);
+    public  static SearchFilter build(String fieldName, Object val){
+        return  new SearchFilter(fieldName,Operator.EQ,val);
     }
-    public SearchFilter(String fieldName, Operator operator) {
+    public SearchFilter(String fieldName, Object val) {
         this.fieldName = fieldName;
-        this.operator = operator;
+        this.value = val;
     }
     public SearchFilter(String fieldName, Operator operator, Object value) {
         this.fieldName = fieldName;

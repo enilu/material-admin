@@ -5,6 +5,7 @@ import cn.enilu.material.bean.vo.query.Page;
 import org.springframework.data.domain.Sort;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -69,6 +70,30 @@ public interface SelectService <T, ID> {
      * @return
      */
     List<T> queryAll(SearchFilter filter,Sort sort);
+
+    /**
+     * 根据原生sql查询数据列表，
+     * 例：select sum(a.1+a.2) from a where a.c=:c
+     * @param sql
+     * @return
+     */
+    List<Map> queryBySql(String sql);
+
+    /**
+     * 根据原生sql查询数据列表
+     * @param sql
+     * @param filter
+     * @return
+     */
+    List<Map> queryBySql(String sql, SearchFilter filter);
+
+    /**
+     * 根据原生sql查询数据列表
+     * @param sql
+     * @param filter
+     * @return
+     */
+    List<Map> queryBySql(String sql, List<SearchFilter> filter);
     /**
      * 查询记录数
      * @param filter

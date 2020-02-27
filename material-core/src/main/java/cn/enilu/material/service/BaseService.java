@@ -17,6 +17,7 @@ import org.springframework.data.jpa.domain.Specification;
 import java.io.Serializable;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -120,8 +121,20 @@ public abstract  class BaseService<T, ID extends Serializable, R extends BaseRep
         }else {
             return queryAll(Lists.newArrayList(), sort);
         }
-
     }
+    @Override
+    public List<Map> queryBySql(String sql){
+        return queryBySql(sql,Lists.newArrayList());
+    }
+    @Override
+    public List<Map> queryBySql(String sql, SearchFilter filter){
+        return dao.queryBySql(sql,Lists.newArrayList(filter));
+    }
+    @Override
+    public List<Map> queryBySql(String sql, List<SearchFilter> filter){
+        return dao.queryBySql(sql,filter);
+    }
+
     @Override
     public long count(SearchFilter filter) {
         return count(Lists.newArrayList(filter));

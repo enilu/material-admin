@@ -56,7 +56,7 @@ public class ${table.ControllerClassName} extends BaseController {
 	}
 	@RequestMapping(value = "/list",method = RequestMethod.POST)
 	@ResponseBody
-	public Object list(@RequestParam(required = false) String name) {
+	public Object list(@RequestParam(name="name",required = false) String name) {
 		Page<${table.EntityClassName}> page = new PageFactory<${table.EntityClassName}>().defaultPage();
 		page.addFilter("name", SearchFilter.Operator.EQ,name);
 		page = ${table.ServiceInstanceName}.queryPage(page);

@@ -7,6 +7,7 @@ import cn.enilu.material.bean.exception.ApplicationException;
 import cn.enilu.material.bean.vo.node.MenuNode;
 import cn.enilu.material.bean.vo.node.Node;
 import cn.enilu.material.bean.vo.node.ZTreeNode;
+import cn.enilu.material.bean.vo.query.SearchFilter;
 import cn.enilu.material.dao.system.MenuRepository;
 import cn.enilu.material.service.BaseService;
 import cn.enilu.material.utils.ToolUtil;
@@ -230,16 +231,13 @@ public class MenuService  extends BaseService<Menu,Long,MenuRepository> {
         return menuRepository.findByCode(code);
     }
 
-    public List<Menu> findByNameLikeAndLevels(String name, Integer level) {
-        return menuRepository.findByNameLikeAndLevels(name,level);
-    }
 
     public List<Menu> findByNameLike(String name) {
-        return menuRepository.findByNameLike(name);
+        return  queryAll(SearchFilter.build("name", SearchFilter.Operator.LIKE,name));
     }
 
     public List<Menu> findByLevels(Integer level) {
-        return menuRepository.findByLevels(level);
+        return queryAll(SearchFilter.build("levels",level));
     }
 
     public List<Long> getMenuIdsByRoleId(Integer roleId) {

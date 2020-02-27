@@ -135,7 +135,9 @@ public class Generator {
             if (commandLine.hasOption("p")) {
                 basePackageName = commandLine.getOptionValue("p");
             }
-//
+			if(commandLine.hasOption("u")){
+                baseUri = commandLine.getOptionValue("u");
+            }
             force = commandLine.hasOption("f");
             if (commandLine.hasOption("h")) {
                 usage(options);

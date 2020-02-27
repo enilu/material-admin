@@ -1,0 +1,12 @@
+{
+  "codeConfig": {
+    "type": "cn.enilu.flash.code.CodeConfig",
+    "fields": {
+      entityModel: "material-core",
+      daoModel: "material-core",
+      serviceModel: "material-core",
+      controllerModel: "material-manage",
+      viewModel: "material-manage"
+    }
+  }
+}

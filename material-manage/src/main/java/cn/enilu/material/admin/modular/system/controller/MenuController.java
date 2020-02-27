@@ -13,10 +13,12 @@ import cn.enilu.material.bean.enumeration.BizExceptionEnum;
 import cn.enilu.material.bean.exception.ApplicationException;
 import cn.enilu.material.bean.exception.ExceptionEnum;
 import cn.enilu.material.bean.vo.node.ZTreeNode;
+import cn.enilu.material.bean.vo.query.SearchFilter;
 import cn.enilu.material.service.system.LogObjectHolder;
 import cn.enilu.material.service.system.MenuService;
 import cn.enilu.material.service.system.impl.ConstantFactory;
 import cn.enilu.material.utils.BeanUtil;
+import cn.enilu.material.utils.Lists;
 import cn.enilu.material.utils.ToolUtil;
 import cn.enilu.material.warpper.MenuWarpper;
 import com.google.common.base.Strings;
@@ -114,16 +116,19 @@ public class MenuController extends BaseController {
     public Object list(@RequestParam(required = false) String menuName, @RequestParam(required = false) String level) {
         List<Menu> menus = null;
         if (Strings.isNullOrEmpty(menuName) && Strings.isNullOrEmpty(level)) {
-            menus = (List<Menu>) this.menuService.queryAll();
+            menus =   menuService.queryAll();
         }
         if (!Strings.isNullOrEmpty(menuName) && !Strings.isNullOrEmpty(level)) {
-            menus = this.menuService.findByNameLikeAndLevels("%" + menuName + "%", Integer.valueOf(level));
+            menus = menuService.queryAll(Lists.newArrayList(
+                    SearchFilter.build("name", SearchFilter.Operator.LIKE,menuName),
+                    SearchFilter.build("levels",level)
+            ));
         }
         if (!Strings.isNullOrEmpty(menuName) && Strings.isNullOrEmpty(level)) {
-            menus = this.menuService.findByNameLike("%" + menuName + "%");
+            menus = menuService.findByNameLike( menuName );
         }
         if (Strings.isNullOrEmpty(menuName) && !Strings.isNullOrEmpty(level)) {
-            menus = this.menuService.findByLevels(Integer.valueOf(level));
+            menus = menuService.findByLevels(Integer.valueOf(level));
         }
 
         return super.warpObject(new MenuWarpper(BeanUtil.objectsToMaps(menus)));

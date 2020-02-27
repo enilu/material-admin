@@ -14,14 +14,14 @@ var ${table.entityClassName} = {
 ${table.entityClassName}.initColumn = function () {
     return [
         {field: 'selectItem', checkbox: true},
-        {title: 'ID', field: 'id', visible: true, align: 'center', valign: 'middle'},
+        {title: 'ID', field: 'id', visible: true, align: 'center', valign: 'middle',sortable:true},
 #foreach ($column in $table.LabeledColumns)
     #if($velocityCount==1)
-        {title: '${column.label}', field: '${column.FieldName}', visible: true, align: 'center', valign: 'middle',formatter:function(data,row){
+        {title: '${column.label}', field: '${column.FieldName}', visible: true, align: 'center', valign: 'middle',sortable:true,formatter:function(data,row){
                 return '<a href="javascript:;" onclick="${table.entityClassName}.open${table.entityClassName}Detail('+row.id+')">'+data+'</a>';
          }},
     #else
-        {title: '${column.label}', field: '${column.FieldName}', visible: true, align: 'center', valign: 'middle'},
+        {title: '${column.label}', field: '${column.FieldName}', visible: true, align: 'center', valign: 'middle',sortable:true},
     #end
 #end
         {title: '操作',formatter:function(data,row){
@@ -91,7 +91,7 @@ ${table.entityClassName}.search = function () {
 /**
  * 重置查询条件
  */
-Boy.reset = function () {
+${table.entityClassName}.reset = function () {
     $('#name').val('');
     this.search();
 };

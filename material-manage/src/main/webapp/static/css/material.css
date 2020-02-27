@@ -33,3 +33,6 @@
     text-align: center !important;
     vertical-align: middle !important;
 }
+.fixed-table-pagination .pagination a {
+    padding: 9px 12px !important;
+}

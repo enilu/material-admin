@@ -5,11 +5,13 @@ import cn.enilu.material.bean.constant.state.ManagerStatus;
 import cn.enilu.material.bean.core.ShiroUser;
 import cn.enilu.material.bean.entity.system.User;
 import cn.enilu.material.bean.vo.node.MenuNode;
+import cn.enilu.material.bean.vo.query.SearchFilter;
 import cn.enilu.material.dao.system.MenuRepository;
 import cn.enilu.material.dao.system.UserRepository;
 import cn.enilu.material.service.system.MenuService;
 import cn.enilu.material.service.system.impl.ConstantFactory;
 import cn.enilu.material.utils.Convert;
+import cn.enilu.material.utils.Lists;
 import org.apache.shiro.authc.CredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
@@ -22,6 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @DependsOn("springContextHolder")
@@ -89,7 +92,14 @@ public class ShiroFactroy implements IShiro {
 
     @Override
     public List<String> findPermissionsByRoleId(Integer roleId) {
-        List<String> resUrls = menuRepository.getResUrlsByRoleId(roleId);
+        String sql = "select url from t_sys_relation rel inner join t_sys_menu m on rel.menuid = m.id where m.status=1 and  rel.roleid=:roleId";
+        List<Map>  list = menuService.queryBySql(sql, SearchFilter.build("roleId",roleId));
+        List<String> resUrls = Lists.newArrayList();
+        if(list!=null&&!list.isEmpty()){
+            for(Map map :list){
+                resUrls.add(map.get("url").toString());
+            }
+        }
         return resUrls;
     }
 
