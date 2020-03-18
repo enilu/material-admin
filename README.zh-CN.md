@@ -66,9 +66,10 @@
 [https://enilu.gitee.io/material-admin](https://enilu.gitee.io/material-admin)
 
 ## 交流
-- Bugs: [Issues](https://gitee.com/enilu/material-admin/issues/new)
-- QQ: 欢迎加入qq交流群 752844606
-- 微信群: 请添加myenilu好友后入群，添加备注：material-admin 
+- 关注公众号：嗨客帝国，点击web-flash菜单进群交流。
+
+![公众号二维码](doc/img/haike.jpg)
+ 
 - Gitter: [Gitter channel](https://gitter.im/springboot-material-admin/community)
 
 ## License

@@ -2,6 +2,7 @@ package cn.enilu.material.dao;
 
 import cn.enilu.material.bean.vo.query.SearchFilter;
 import org.hibernate.SQLQuery;
+import org.hibernate.query.internal.NativeQueryImpl;
 import org.hibernate.transform.Transformers;
 import org.springframework.data.jpa.repository.support.JpaEntityInformation;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
@@ -40,12 +41,8 @@ public class BaseRepositoryImpl<T, ID extends Serializable>
     @Override
     public List<Map> queryBySql(String sql, List<SearchFilter> filters) {
         Query query = entityManager.createNativeQuery(sql);
-        if(filters!=null&&!filters.isEmpty()){
-            for(SearchFilter filter:filters){
-                query.setParameter(filter.fieldName, filter.value);
-            }
-        }
-        query.unwrap(SQLQuery.class).setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
+        query.unwrap(NativeQueryImpl.class)
+                .setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         List list = query.getResultList();
         return list;
     }
