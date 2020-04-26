@@ -104,7 +104,7 @@ public class TimeCacheMap<K, V> {
         return _buckets.getFirst().size();
     }
 
-    //这个方法也太迷惑人了，作用就是把清理线程杀掉，这样数据就不会过期了，应该改名叫neverCleanup
+
     public void cleanup() {
         //中断清理线程中的sleep，_cleaner线程会抛出异常，然后_cleaner线程就死了，不再清理过期数据了
         _cleaner.interrupt();  //调用了interrupt后，再跑sleep就会抛InterruptedException异常

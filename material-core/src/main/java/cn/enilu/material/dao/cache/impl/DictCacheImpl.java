@@ -2,6 +2,7 @@ package cn.enilu.material.dao.cache.impl;
 
 import cn.enilu.material.bean.constant.cache.CacheKey;
 import cn.enilu.material.bean.entity.system.Dict;
+import cn.enilu.material.dao.cache.BaseCache;
 import cn.enilu.material.dao.cache.CacheDao;
 import cn.enilu.material.dao.cache.DictCache;
 import cn.enilu.material.dao.system.DictRepository;
@@ -17,7 +18,7 @@ import java.util.List;
  * @version 2018/12/23 0023
  */
 @Component
-public class DictCacheImpl implements DictCache {
+public class DictCacheImpl extends BaseCache implements DictCache {
     @Autowired
     private DictRepository dictRepository;
     @Autowired
@@ -25,40 +26,41 @@ public class DictCacheImpl implements DictCache {
 
     @Override
     public List<Dict> getDictsByPname(String dictName) {
-        return (List<Dict>) cacheDao.hget(EhcacheDao.CONSTANT,CacheKey.DICT+dictName,List.class);
+        return (List<Dict>) cacheDao.hget(EhcacheDao.CONSTANT, CacheKey.DICT + dictName, List.class);
     }
 
     @Override
     public String getDict(Long dictId) {
-        return (String) get(CacheKey.DICT_NAME+String.valueOf(dictId));
+        return (String) get(CacheKey.DICT_NAME + String.valueOf(dictId));
     }
 
     @Override
     public void cache() {
-    List<Dict> list = dictRepository.findByPid(0L);
-    for(Dict dict:list){
-        List<Dict> children  = dictRepository.findByPid(dict.getId());
-        if(children.isEmpty()) {
-           continue;
-        }
-        set(String.valueOf(dict.getId()), children);
-        set(dict.getName(), children);
-        for(Dict child:children){
-            set(CacheKey.DICT_NAME+String.valueOf(child.getId()),child.getName());
-        }
+        super.cache();
+        List<Dict> list = dictRepository.findByPid(0L);
+        for (Dict dict : list) {
+            List<Dict> children = dictRepository.findByPid(dict.getId());
+            if (children.isEmpty()) {
+                continue;
+            }
+            set(String.valueOf(dict.getId()), children);
+            set(dict.getName(), children);
+            for (Dict child : children) {
+                set(CacheKey.DICT_NAME + String.valueOf(child.getId()), child.getName());
+            }
 
-    }
+        }
 
     }
 
     @Override
     public Object get(String key) {
-        return cacheDao.hget(EhcacheDao.CONSTANT,CacheKey.DICT+key);
+        return cacheDao.hget(EhcacheDao.CONSTANT, CacheKey.DICT + key);
     }
 
     @Override
     public void set(String key, Object val) {
-        cacheDao.hset(EhcacheDao.CONSTANT,CacheKey.DICT+key,val);
+        cacheDao.hset(EhcacheDao.CONSTANT, CacheKey.DICT + key, val);
 
     }
 }

@@ -1,6 +1,7 @@
 package cn.enilu.material.dao.cache.impl;
 
 import cn.enilu.material.bean.entity.system.Cfg;
+import cn.enilu.material.dao.cache.BaseCache;
 import cn.enilu.material.dao.cache.CacheDao;
 import cn.enilu.material.dao.cache.ConfigCache;
 import cn.enilu.material.dao.system.CfgRepository;
@@ -19,7 +20,7 @@ import java.util.List;
  * @version 2018/12/20 0020
  */
 @Service
-public class ConfigCacheImpl implements ConfigCache {
+public class ConfigCacheImpl  extends BaseCache implements ConfigCache {
     private static  final Logger logger = LoggerFactory.getLogger(ConfigCacheImpl.class);
     @Autowired
     private CfgRepository cfgRepository;
@@ -65,6 +66,7 @@ public class ConfigCacheImpl implements ConfigCache {
 
     @Override
     public void cache() {
+        super.cache();
         logger.info("reset config cache");
         List<Cfg> list = cfgRepository.findAll();
         if (list != null && !list.isEmpty()) {

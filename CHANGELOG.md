@@ -10,3 +10,6 @@
 - Issue 针对ajax-object.js返回的异常信息统一处理
 - Issue 代码生成功能针对列表页面生成根据字段排序功能
 - Issue service层封装根据sql和条件查询数据列表功能
+
+## Fixes
+- Fix 更新缓存的时候连带更新常量工具类中使用的本地(TimeCacheMap)缓存
