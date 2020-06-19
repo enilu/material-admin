@@ -40,9 +40,15 @@ public class BaseRepositoryImpl<T, ID extends Serializable>
 
     @Override
     public List<Map> queryBySql(String sql, List<SearchFilter> filters) {
-        Query query = entityManager.createNativeQuery(sql);
+            Query query = entityManager.createNativeQuery(sql);
         query.unwrap(NativeQueryImpl.class)
                 .setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
+        if(filters!=null&&!filters.isEmpty()) {
+            for (SearchFilter filter : filters) {
+                query.setParameter(filter.fieldName, filter.value);
+            }
+        }
+
         List list = query.getResultList();
         return list;
     }

@@ -46,7 +46,7 @@
 - 创建数据库： 
     ```sql
     CREATE DATABASE IF NOT EXISTS material DEFAULT CHARSET utf8 COLLATE utf8_general_ci; 
-    CREATE USER 'material'@'%' IDENTIFIED BY 'material123';
+    CREATE USER 'material'@'%' IDENTIFIED BY 'material@123ABC';
     GRANT ALL privileges ON material.* TO 'material'@'%';
     flush privileges;
     
