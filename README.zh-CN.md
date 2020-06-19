@@ -69,7 +69,8 @@
 - 关注公众号：嗨客帝国，点击web-flash菜单进群交流。
 
 ![公众号二维码](doc/img/haike.jpg)
- 
+- 论坛提问
+[http://bbs.enilu.cn](http://bbs.enilu.cn)
 - Gitter: [Gitter channel](https://gitter.im/springboot-material-admin/community)
 
 ## License
