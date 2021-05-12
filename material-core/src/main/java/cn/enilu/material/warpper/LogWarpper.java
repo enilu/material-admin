@@ -1,7 +1,7 @@
 package cn.enilu.material.warpper;
 
-import cn.enilu.material.factory.Contrast;
 import cn.enilu.material.service.system.impl.ConstantFactory;
+import cn.enilu.material.utils.Constants;
 import cn.enilu.material.utils.DateUtil;
 import cn.enilu.material.utils.ToolUtil;
 
@@ -34,8 +34,8 @@ public class LogWarpper extends BaseControllerWarpper {
         }
         map.put("createTime",DateUtil.format((Date) map.get("createTime"),"yyyy-MM-dd hh:MM:ss"));
         //如果信息中包含分割符号;;;   则分割字符串返给前台
-        if (ToolUtil.isNotEmpty(message) && message.indexOf(Contrast.separator) != -1) {
-            String[] msgs = message.split(Contrast.separator);
+        if (ToolUtil.isNotEmpty(message) && message.indexOf(Constants.SEPARATOR) != -1) {
+            String[] msgs = message.split(Constants.SEPARATOR);
             map.put("regularMessage",msgs);
         }else{
             map.put("regularMessage",message);

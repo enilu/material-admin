@@ -2,14 +2,13 @@ package cn.enilu.material.aop;
 
 import cn.enilu.material.bean.core.BussinessLog;
 import cn.enilu.material.bean.core.ShiroUser;
-import cn.enilu.material.bean.dictmap.base.AbstractDictMap;
 import cn.enilu.material.bean.vo.SpringContextHolder;
 import cn.enilu.material.dao.cache.TokenCache;
-import cn.enilu.material.factory.Contrast;
 import cn.enilu.material.platform.log.LogManager;
 import cn.enilu.material.platform.log.LogTaskFactory;
 import cn.enilu.material.service.system.LogObjectHolder;
 import cn.enilu.material.shiro.ShiroKit;
+import cn.enilu.material.utils.BeanUtil;
 import cn.enilu.material.utils.HttpKit;
 import cn.enilu.material.utils.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -109,14 +108,13 @@ public class LogAop {
             Object obj1 = LogObjectHolder.me().get();
             Map<String, String> obj2 = HttpKit.getRequestParameters();
             try {
-                msg = Contrast.contrastObj(dictClass, key, obj1, obj2);
+                msg = BeanUtil.contrastObj(key, obj1, obj2);
             }catch (Exception e){
 
             }
         } else {
             Map<String, String> parameters = HttpKit.getRequestParameters();
-            AbstractDictMap dictMap = (AbstractDictMap) dictClass.newInstance();
-            msg = Contrast.parseMutiKey(dictMap,key,parameters);
+            msg = BeanUtil.parseMutiKey(parameters);
         }
 
         LogManager.me().executeLog(LogTaskFactory.bussinessLog(idUser, bussinessName, className, methodName, msg));
